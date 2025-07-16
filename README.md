@@ -48,6 +48,9 @@ Torii works with the apps you already use  over 180 of them. Unlike other SMPs 
 - [Partners](https://www.toriihq.com/partners)
 - [Branding](https://www.toriihq.com/brand-guidelines)
 - [Login](https://app.toriihq.com/login)
+- [Features](undefined)
+- [UseCases](undefined)
+- [Integrations](undefined)
 
 ## Maintainers
 
