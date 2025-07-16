@@ -1,7 +1,7 @@
-# Solo.io (solo-io)
-Cloud-native API management and service connectivity to automate security, observability, resiliency, and traffic control for any API or workload in any environment.
+# Torii (torii)
+Torii is the market leading SaaS Management Platform built to bring all your software into one place. So you can discover shadow IT, enforce governance, cut costs, and operationalize every app.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/solo-io/refs/heads/main/apis.yml)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/torii/refs/heads/main/apis.yml)
 
 ## Scope
 
@@ -11,42 +11,43 @@ Cloud-native API management and service connectivity to automate security, obser
 
 ## Tags:
 
- - Management, Security, Observability, Resiliency, Traffic Control, Platform, Automation, Analytics, Monetization, Gateways, AI Gateway, Service Mesh
+ - SaaS Management
 
 ## Timestamps
 
-- **Created:** 2025-01-08 
-- **Modified:** 2025-06-09 
+- **Created:** 2025-07-15 
+- **Modified:** 2025-07-15 
 
 ## APIs
 
-### Solo.io
-Fully connect your APIs and services from end  to end user and win in the cloud-native era.
+### Torii
+Torii works with the apps you already use  over 180 of them. Unlike other SMPs that only report just basic cost data, Toriis integrations provide license and usage data too. 
 
-**Human URL:** [https://www.solo.io/](https://www.solo.io/)
+**Human URL:** [ https://www.toriihq.com/]( https://www.toriihq.com/)
 
 
 #### Tags:
 
- - Management, Security, Observability, Resiliency, Traffic Control, Platform, Automation, Analytics, Monetization, Gateways, AI Gateway, Service Mesh
+ - SaaS Management
 
 #### Properties
 
-- [Documentation](https://www.solo.io/)
+- [Documentation]( https://www.toriihq.com/)
 
 ## Common Properties
 
-- [Customers](https://www.solo.io/customers)
-- [CaseStudies](https://www.solo.io/resources/case-study)
-- [Blog](https://www.solo.io/blog)
-- [Documentation](https://www.solo.io/docs)
-- [WhitePapers](https://www.solo.io/resources/white-paper)
-- [Videos](https://www.solo.io/resources/video)
-- [Webinars](https://www.solo.io/resources/webinar)
-- [eBooks](https://www.solo.io/resources/ebook)
-- [Partners](https://www.solo.io/partners)
-- [Support](https://www.solo.io/company/get-support)
-- [Pricing](https://www.solo.io/pricing)
+- [LinkedIn](https://www.linkedin.com/company/toriihq/)
+- [Website](https://www.toriihq.com/about)
+- [Website](https://www.toriihq.com/about)
+- [Integrations](https://www.toriihq.com/integration/page/14)
+- [Pricing](https://www.toriihq.com/pricing)
+- [About](https://www.toriihq.com/about)
+- [TermsOfService](https://www.toriihq.com/terms)
+- [PrivacyPolicy](https://www.toriihq.com/security)
+- [Customers](https://www.toriihq.com/customers)
+- [Partners](https://www.toriihq.com/partners)
+- [Branding](https://www.toriihq.com/brand-guidelines)
+- [Login](https://app.toriihq.com/login)
 
 ## Maintainers
 
