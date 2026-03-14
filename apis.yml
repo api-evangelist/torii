@@ -10,10 +10,14 @@ apis:
     properties:
       - url: ' https://www.toriihq.com/'
         type: Documentation
+      - url: https://developers.toriihq.com/reference/introduction-1
+        type: Documentation
+      - url: openapi/torii-torii-openapi.yml
+        type: OpenAPI
     description: >-
       Torii works with the apps you already use over 180 of them. Unlike other
       SMPs that only report just basic cost data, Toriis integrations provide
-      license and usage data too. 
+      license and usage data too.
 name: Torii
 tags:
   - SaaS Management
@@ -21,7 +25,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-07-15'
-modified: '2025-07-15'
+modified: '2026-03-14'
 position: Consuming
 description: >-
   Torii is the market leading SaaS Management Platform built to bring all your

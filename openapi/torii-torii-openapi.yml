@@ -1,0 +1,1095 @@
+openapi: 3.1.0
+info:
+  title: Torii API
+  description: >-
+    The Torii API provides programmatic access to the Torii SaaS Management
+    Platform. It allows you to manage apps, users, contracts, licenses, audit
+    logs, and file uploads. The API closely follows REST semantics, uses JSON to
+    encode objects, and relies on standard HTTP codes to signal operation
+    outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.
+  version: 1.1.0
+  contact:
+    name: Torii
+    url: https://developers.toriihq.com
+  termsOfService: https://www.toriihq.com/terms
+servers:
+  - url: https://api.toriihq.com/v1.0
+    description: Torii API v1.0
+  - url: https://api.toriihq.com/v1.1
+    description: Torii API v1.1
+security:
+  - bearerAuth: []
+tags:
+  - name: Apps
+    description: Manage applications discovered and tracked in your organization.
+  - name: Users
+    description: Manage users in your organization.
+  - name: Contracts
+    description: Manage SaaS contracts and renewal information.
+  - name: Audit
+    description: Retrieve admin audit log entries.
+  - name: Files
+    description: Upload and manage files.
+  - name: Metadata
+    description: Retrieve field metadata for apps, users, and contracts.
+  - name: Parsings
+    description: Manage file parsing and column mapping.
+  - name: Services
+    description: Custom integration sync services.
+  - name: SCIM
+    description: SCIM 2.0 user provisioning endpoints.
+paths:
+  /apps:
+    get:
+      operationId: getApps
+      summary: List apps
+      description: >-
+        Returns a list of apps used in the organization. Supports filtering via
+        query parameters including custom application fields.
+      tags:
+        - Apps
+      parameters:
+        - name: fields
+          in: query
+          description: >-
+            Comma-separated list of fields to include in the response (e.g.
+            id,name,category).
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: Filter apps by state (e.g. discovered, managed, closed).
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Field to sort results by.
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Number of results per page.
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          description: Cursor for pagination to retrieve the next page of results.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of apps.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/App'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /apps/metadata:
+    get:
+      operationId: getAppsMetadata
+      summary: List app fields metadata
+      description: >-
+        Lists app fields (predefined and custom), searchable by field name or
+        key.
+      tags:
+        - Metadata
+      parameters:
+        - name: search
+          in: query
+          description: Search by field name or key.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of app field metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FieldMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /users:
+    get:
+      operationId: getUsers
+      summary: List users
+      description: >-
+        Returns the list of users in your organization. Supports filtering via
+        query parameters. Rate limit: 100 requests per minute.
+      tags:
+        - Users
+      parameters:
+        - name: fields
+          in: query
+          description: Comma-separated list of fields to include in the response.
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Field to sort results by.
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Number of results per page.
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          description: Cursor for pagination to retrieve the next page of results.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of users.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /users/metadata:
+    get:
+      operationId: getUsersMetadata
+      summary: List user fields metadata
+      description: >-
+        Lists user fields (predefined and custom), searchable by field name or
+        key.
+      tags:
+        - Metadata
+      parameters:
+        - name: search
+          in: query
+          description: Search by field name or key.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of user field metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FieldMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /contracts/{idContract}:
+    get:
+      operationId: getContract
+      summary: Get contract
+      description: Returns details of a specific contract by ID.
+      tags:
+        - Contracts
+      parameters:
+        - name: idContract
+          in: path
+          required: true
+          description: The unique identifier of the contract.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: Contract details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Contract not found.
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    put:
+      operationId: updateContract
+      summary: Update contract
+      description: Updates an existing contract.
+      tags:
+        - Contracts
+      parameters:
+        - name: idContract
+          in: path
+          required: true
+          description: The unique identifier of the contract.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractUpdate'
+      responses:
+        '200':
+          description: Contract updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Contract not found.
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /contracts/metadata:
+    get:
+      operationId: getContractsMetadata
+      summary: List contract fields metadata
+      description: >-
+        Lists contract fields (predefined and custom), searchable by field name
+        or key.
+      tags:
+        - Metadata
+      parameters:
+        - name: search
+          in: query
+          description: Search by field name or key.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of contract field metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FieldMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /audit:
+    get:
+      operationId: getAudit
+      summary: Get admin audit logs
+      description: >-
+        Retrieves admin audit log entries. Supports retrieving up to 1,000 audit
+        log entries per request for efficient bulk data access.
+      tags:
+        - Audit
+      parameters:
+        - name: sort
+          in: query
+          description: Field to sort results by.
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Number of results per page (max 1000).
+          schema:
+            type: integer
+            maximum: 1000
+        - name: cursor
+          in: query
+          description: Cursor for pagination to retrieve the next page of results.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of audit log entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AuditLogEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /files/upload:
+    post:
+      operationId: uploadFile
+      summary: Upload file (up to 3MB)
+      description: >-
+        Upload small files up to 3MB as multipart form data. Supported file
+        types: .csv, .xls, .xlsx, .pdf, .doc, .docx, .png, .jpg, .jpeg, .xml,
+        .json, .zip.
+      tags:
+        - Files
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The file to upload (max 3MB).
+              required:
+                - file
+      responses:
+        '200':
+          description: File uploaded successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the uploaded file.
+                  url:
+                    type: string
+                    description: URL of the uploaded file.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '413':
+          description: File too large (exceeds 3MB limit).
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /files/url:
+    get:
+      operationId: getFileUploadUrl
+      summary: Get file upload URL
+      description: >-
+        Returns a secure, temporary S3 URL for uploading larger files directly.
+      tags:
+        - Files
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A temporary upload URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: uri
+                    description: Temporary S3 upload URL.
+                  fileId:
+                    type: string
+                    description: The file identifier to use after upload.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /parsings/{id}:
+    get:
+      operationId: getParsingRequest
+      summary: Get parse request
+      description: Returns the status and details of a file parsing request.
+      tags:
+        - Parsings
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the parsing request.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: Parsing request details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParsingRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Parsing request not found.
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /parsings/manual:
+    put:
+      operationId: updateParsingManual
+      summary: Map CSV columns
+      description: >-
+        Maps CSV columns to Torii fields for manual parsing of uploaded files.
+      tags:
+        - Parsings
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileId:
+                  type: string
+                  description: The file ID returned from upload.
+                mappings:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      sourceColumn:
+                        type: string
+                        description: Column name from the uploaded CSV.
+                      targetField:
+                        type: string
+                        description: Torii field to map to.
+              required:
+                - fileId
+                - mappings
+      responses:
+        '200':
+          description: Mapping applied successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The parsing request ID.
+                  status:
+                    type: string
+                    description: Status of the parsing request.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /services/sync/custom:
+    post:
+      operationId: syncCustomIntegration
+      summary: Sync custom integration
+      description: >-
+        Triggers a sync of custom integration data, pushing user and license
+        data into Torii.
+      tags:
+        - Services
+      parameters:
+        - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appName:
+                  type: string
+                  description: The name of the application to sync.
+                users:
+                  type: array
+                  description: List of users and their license information.
+                  items:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        format: email
+                        description: User email address.
+                      status:
+                        type: string
+                        description: User status in the application.
+                      role:
+                        type: string
+                        description: User role in the application.
+                      lastUsedDate:
+                        type: string
+                        format: date-time
+                        description: Last time the user accessed the application.
+                licenses:
+                  type: array
+                  description: License information for the application.
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: License type name.
+                      total:
+                        type: integer
+                        description: Total number of licenses.
+                      used:
+                        type: integer
+                        description: Number of licenses in use.
+                      pricePerUser:
+                        type: number
+                        description: Cost per user for this license type.
+              required:
+                - appName
+      responses:
+        '200':
+          description: Sync triggered successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Status of the sync operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /workflows/actionExecutions:
+    get:
+      operationId: getWorkflowActionExecutions
+      summary: List workflow action executions
+      description: Returns a list of workflow action executions.
+      tags:
+        - Services
+      parameters:
+        - name: sort
+          in: query
+          description: Field to sort results by.
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Number of results per page.
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          description: Cursor for pagination.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of workflow action executions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        workflowId:
+                          type: string
+                        actionType:
+                          type: string
+                        status:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        completedAt:
+                          type: string
+                          format: date-time
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /scim/v2/Users:
+    get:
+      operationId: listScimUsers
+      summary: List SCIM users
+      description: >-
+        List users via SCIM 2.0 protocol. Default results per page is 100, with
+        a maximum of 200.
+      tags:
+        - SCIM
+      parameters:
+        - name: startIndex
+          in: query
+          description: The 1-based index of the first result.
+          schema:
+            type: integer
+            default: 1
+        - name: count
+          in: query
+          description: Number of results per page (max 200).
+          schema:
+            type: integer
+            default: 100
+            maximum: 200
+        - name: filter
+          in: query
+          description: SCIM filter expression (e.g. userName eq "user@example.com").
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of SCIM user resources.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    items:
+                      type: string
+                  totalResults:
+                    type: integer
+                  startIndex:
+                    type: integer
+                  itemsPerPage:
+                    type: integer
+                  Resources:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createScimUser
+      summary: Create SCIM user
+      description: Creates a new user via SCIM 2.0 protocol.
+      tags:
+        - SCIM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScimUser'
+      responses:
+        '201':
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: User already exists.
+  /scim/v2/Users/{idUser}:
+    get:
+      operationId: getScimUser
+      summary: Get SCIM user
+      description: Returns a specific user by ID via SCIM 2.0 protocol.
+      tags:
+        - SCIM
+      parameters:
+        - name: idUser
+          in: path
+          required: true
+          description: The unique SCIM user identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: SCIM user resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: User not found.
+    patch:
+      operationId: patchScimUser
+      summary: Patch SCIM user
+      description: Partially updates a user via SCIM 2.0 protocol.
+      tags:
+        - SCIM
+      parameters:
+        - name: idUser
+          in: path
+          required: true
+          description: The unique SCIM user identifier.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                schemas:
+                  type: array
+                  items:
+                    type: string
+                Operations:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      op:
+                        type: string
+                        enum:
+                          - replace
+                          - add
+                          - remove
+                      path:
+                        type: string
+                      value:
+                        description: The value to set.
+      responses:
+        '200':
+          description: User updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: User not found.
+    delete:
+      operationId: deleteScimUser
+      summary: Delete SCIM user
+      description: Deletes a user via SCIM 2.0 protocol.
+      tags:
+        - SCIM
+      parameters:
+        - name: idUser
+          in: path
+          required: true
+          description: The unique SCIM user identifier.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: User deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: User not found.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key authentication. Generate an API key from Settings > API Access
+        in Torii. Use the Authorization header: Bearer {API_KEY}.
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: >-
+        Override the default API version. Supported values: 1.0, 1.1. Default is
+        1.0 for keys created before Feb 1st 2025, and 1.1 for keys created
+        after.
+      schema:
+        type: string
+        enum:
+          - '1.0'
+          - '1.1'
+  responses:
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+    RateLimited:
+      description: Rate limit exceeded. Too many requests.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  schemas:
+    App:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the app.
+        name:
+          type: string
+          description: Name of the application.
+        category:
+          type: string
+          description: Application category.
+        state:
+          type: string
+          description: Current state (e.g. discovered, managed, closed).
+        url:
+          type: string
+          format: uri
+          description: Application URL.
+        activeUsers:
+          type: integer
+          description: Number of active users.
+        totalUsers:
+          type: integer
+          description: Total number of users.
+        totalLicenses:
+          type: integer
+          description: Total number of licenses.
+        annualCost:
+          type: number
+          description: Annual cost of the application.
+        owner:
+          type: string
+          description: Application owner.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the app was first discovered.
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the user.
+        email:
+          type: string
+          format: email
+          description: User email address.
+        firstName:
+          type: string
+          description: First name.
+        lastName:
+          type: string
+          description: Last name.
+        status:
+          type: string
+          description: User status.
+        department:
+          type: string
+          description: Department the user belongs to.
+        isExternal:
+          type: boolean
+          description: Whether the user is external.
+        appsCount:
+          type: integer
+          description: Number of apps the user has access to.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the user was created.
+    Contract:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the contract.
+        appId:
+          type: string
+          description: Associated application ID.
+        appName:
+          type: string
+          description: Associated application name.
+        name:
+          type: string
+          description: Contract name.
+        status:
+          type: string
+          description: Contract status.
+        startDate:
+          type: string
+          format: date
+          description: Contract start date.
+        endDate:
+          type: string
+          format: date
+          description: Contract end date.
+        renewalDate:
+          type: string
+          format: date
+          description: Contract renewal date.
+        annualCost:
+          type: number
+          description: Annual cost.
+        currency:
+          type: string
+          description: Currency code.
+        owner:
+          type: string
+          description: Contract owner.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the contract was created.
+    ContractUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Contract name.
+        status:
+          type: string
+          description: Contract status.
+        startDate:
+          type: string
+          format: date
+          description: Contract start date.
+        endDate:
+          type: string
+          format: date
+          description: Contract end date.
+        renewalDate:
+          type: string
+          format: date
+          description: Contract renewal date.
+        annualCost:
+          type: number
+          description: Annual cost.
+        currency:
+          type: string
+          description: Currency code.
+        owner:
+          type: string
+          description: Contract owner.
+    AuditLogEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the audit log entry.
+        action:
+          type: string
+          description: The action that was performed.
+        actor:
+          type: string
+          description: The user who performed the action.
+        actorEmail:
+          type: string
+          format: email
+          description: Email of the user who performed the action.
+        target:
+          type: string
+          description: The target of the action.
+        details:
+          type: object
+          description: Additional details about the action.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the action was performed.
+    FieldMetadata:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Field key identifier.
+        name:
+          type: string
+          description: Display name of the field.
+        type:
+          type: string
+          description: Data type of the field.
+        isCustom:
+          type: boolean
+          description: Whether this is a custom field.
+        isRequired:
+          type: boolean
+          description: Whether this field is required.
+    ParsingRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the parsing request.
+        fileId:
+          type: string
+          description: Associated file ID.
+        status:
+          type: string
+          description: Current status of the parsing request.
+        columns:
+          type: array
+          items:
+            type: string
+          description: Detected columns from the file.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the parsing request was created.
+    ScimUser:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+          example:
+            - urn:ietf:params:scim:schemas:core:2.0:User
+        id:
+          type: string
+          description: Unique SCIM identifier.
+        userName:
+          type: string
+          description: Username, typically the email address.
+        name:
+          type: object
+          properties:
+            givenName:
+              type: string
+              description: First name.
+            familyName:
+              type: string
+              description: Last name.
+        emails:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                format: email
+              type:
+                type: string
+              primary:
+                type: boolean
+        active:
+          type: boolean
+          description: Whether the user is active.
+        displayName:
+          type: string
+          description: Display name.
+        externalId:
+          type: string
+          description: External identifier from the identity provider.
