@@ -14,6 +14,22 @@ apis:
         type: Documentation
       - url: openapi/torii-torii-openapi.yml
         type: OpenAPI
+      - url: json-schema/app.json
+        type: JSONSchema
+      - url: json-schema/user.json
+        type: JSONSchema
+      - url: json-schema/contract.json
+        type: JSONSchema
+      - url: json-schema/audit-log-entry.json
+        type: JSONSchema
+      - url: json-schema/field-metadata.json
+        type: JSONSchema
+      - url: json-schema/parsing-request.json
+        type: JSONSchema
+      - url: json-schema/scim-user.json
+        type: JSONSchema
+      - url: json-ld/torii-context.jsonld
+        type: JSONLD
     description: >-
       Torii works with the apps you already use over 180 of them. Unlike other
       SMPs that only report just basic cost data, Toriis integrations provide

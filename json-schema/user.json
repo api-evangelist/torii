@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/torii/refs/heads/main/json-schema/user.json",
+  "title": "Torii User",
+  "description": "A user within the Torii SaaS Management Platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the user."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User email address."
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name."
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name."
+    },
+    "status": {
+      "type": "string",
+      "description": "User status."
+    },
+    "department": {
+      "type": "string",
+      "description": "Department the user belongs to."
+    },
+    "isExternal": {
+      "type": "boolean",
+      "description": "Whether the user is external."
+    },
+    "appsCount": {
+      "type": "integer",
+      "description": "Number of apps the user has access to."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the user was created."
+    }
+  },
+  "required": ["id", "email"]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/torii/refs/heads/main/json-schema/app.json",
+  "title": "Torii App",
+  "description": "An application discovered and tracked within the Torii SaaS Management Platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the app."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the application."
+    },
+    "category": {
+      "type": "string",
+      "description": "Application category."
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state (e.g. discovered, managed, closed).",
+      "enum": ["discovered", "managed", "closed"]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Application URL."
+    },
+    "activeUsers": {
+      "type": "integer",
+      "description": "Number of active users."
+    },
+    "totalUsers": {
+      "type": "integer",
+      "description": "Total number of users."
+    },
+    "totalLicenses": {
+      "type": "integer",
+      "description": "Total number of licenses."
+    },
+    "annualCost": {
+      "type": "number",
+      "description": "Annual cost of the application."
+    },
+    "owner": {
+      "type": "string",
+      "description": "Application owner."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the app was first discovered."
+    }
+  },
+  "required": ["id", "name"]
+}

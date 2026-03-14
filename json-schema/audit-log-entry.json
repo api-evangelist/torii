@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/torii/refs/heads/main/json-schema/audit-log-entry.json",
+  "title": "Torii Audit Log Entry",
+  "description": "An admin audit log entry recording an action performed within the Torii platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the audit log entry."
+    },
+    "action": {
+      "type": "string",
+      "description": "The action that was performed."
+    },
+    "actor": {
+      "type": "string",
+      "description": "The user who performed the action."
+    },
+    "actorEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "Email of the user who performed the action."
+    },
+    "target": {
+      "type": "string",
+      "description": "The target of the action."
+    },
+    "details": {
+      "type": "object",
+      "description": "Additional details about the action."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the action was performed."
+    }
+  },
+  "required": ["id", "action"]
+}

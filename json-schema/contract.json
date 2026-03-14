@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/torii/refs/heads/main/json-schema/contract.json",
+  "title": "Torii Contract",
+  "description": "A SaaS contract managed within the Torii platform, including renewal and cost information.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the contract."
+    },
+    "appId": {
+      "type": "string",
+      "description": "Associated application ID."
+    },
+    "appName": {
+      "type": "string",
+      "description": "Associated application name."
+    },
+    "name": {
+      "type": "string",
+      "description": "Contract name."
+    },
+    "status": {
+      "type": "string",
+      "description": "Contract status."
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract start date."
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract end date."
+    },
+    "renewalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract renewal date."
+    },
+    "annualCost": {
+      "type": "number",
+      "description": "Annual cost."
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code."
+    },
+    "owner": {
+      "type": "string",
+      "description": "Contract owner."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the contract was created."
+    }
+  },
+  "required": ["id"]
+}

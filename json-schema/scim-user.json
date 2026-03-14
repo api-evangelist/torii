@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/torii/refs/heads/main/json-schema/scim-user.json",
+  "title": "Torii SCIM User",
+  "description": "A SCIM 2.0 user resource for provisioning users into the Torii platform.",
+  "type": "object",
+  "properties": {
+    "schemas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "examples": [
+        ["urn:ietf:params:scim:schemas:core:2.0:User"]
+      ]
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique SCIM identifier."
+    },
+    "userName": {
+      "type": "string",
+      "description": "Username, typically the email address."
+    },
+    "name": {
+      "type": "object",
+      "properties": {
+        "givenName": {
+          "type": "string",
+          "description": "First name."
+        },
+        "familyName": {
+          "type": "string",
+          "description": "Last name."
+        }
+      }
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "email"
+          },
+          "type": {
+            "type": "string"
+          },
+          "primary": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the user is active."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name."
+    },
+    "externalId": {
+      "type": "string",
+      "description": "External identifier from the identity provider."
+    }
+  },
+  "required": ["userName"]
+}
