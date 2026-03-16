@@ -41,7 +41,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-07-15'
-modified: '2026-03-14'
+modified: '2026-03-16'
 position: Consuming
 description: >-
   Torii is the market leading SaaS Management Platform built to bring all your
@@ -49,7 +49,7 @@ description: >-
   cut costs, and operationalize every app.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
   - name: LinkedIn
