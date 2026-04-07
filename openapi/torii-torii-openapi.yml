@@ -42,7 +42,7 @@ paths:
   /apps:
     get:
       operationId: getApps
-      summary: List apps
+      summary: Torii List apps
       description: >-
         Returns a list of apps used in the organization. Supports filtering via
         query parameters including custom application fields.
@@ -96,7 +96,7 @@ paths:
   /apps/metadata:
     get:
       operationId: getAppsMetadata
-      summary: List app fields metadata
+      summary: Torii List app fields metadata
       description: >-
         Lists app fields (predefined and custom), searchable by field name or
         key.
@@ -128,7 +128,7 @@ paths:
   /users:
     get:
       operationId: getUsers
-      summary: List users
+      summary: Torii List users
       description: >-
         Returns the list of users in your organization. Supports filtering via
         query parameters. Rate limit: 100 requests per minute.
@@ -175,7 +175,7 @@ paths:
   /users/metadata:
     get:
       operationId: getUsersMetadata
-      summary: List user fields metadata
+      summary: Torii List user fields metadata
       description: >-
         Lists user fields (predefined and custom), searchable by field name or
         key.
@@ -207,7 +207,7 @@ paths:
   /contracts/{idContract}:
     get:
       operationId: getContract
-      summary: Get contract
+      summary: Torii Get contract
       description: Returns details of a specific contract by ID.
       tags:
         - Contracts
@@ -234,7 +234,7 @@ paths:
           $ref: '#/components/responses/RateLimited'
     put:
       operationId: updateContract
-      summary: Update contract
+      summary: Torii Update contract
       description: Updates an existing contract.
       tags:
         - Contracts
@@ -268,7 +268,7 @@ paths:
   /contracts/metadata:
     get:
       operationId: getContractsMetadata
-      summary: List contract fields metadata
+      summary: Torii List contract fields metadata
       description: >-
         Lists contract fields (predefined and custom), searchable by field name
         or key.
@@ -300,7 +300,7 @@ paths:
   /audit:
     get:
       operationId: getAudit
-      summary: Get admin audit logs
+      summary: Torii Get admin audit logs
       description: >-
         Retrieves admin audit log entries. Supports retrieving up to 1,000 audit
         log entries per request for efficient bulk data access.
@@ -343,7 +343,7 @@ paths:
   /files/upload:
     post:
       operationId: uploadFile
-      summary: Upload file (up to 3MB)
+      summary: Torii Upload file (up to 3MB)
       description: >-
         Upload small files up to 3MB as multipart form data. Supported file
         types: .csv, .xls, .xlsx, .pdf, .doc, .docx, .png, .jpg, .jpeg, .xml,
@@ -388,7 +388,7 @@ paths:
   /files/url:
     get:
       operationId: getFileUploadUrl
-      summary: Get file upload URL
+      summary: Torii Get file upload URL
       description: >-
         Returns a secure, temporary S3 URL for uploading larger files directly.
       tags:
@@ -417,7 +417,7 @@ paths:
   /parsings/{id}:
     get:
       operationId: getParsingRequest
-      summary: Get parse request
+      summary: Torii Get parse request
       description: Returns the status and details of a file parsing request.
       tags:
         - Parsings
@@ -445,7 +445,7 @@ paths:
   /parsings/manual:
     put:
       operationId: updateParsingManual
-      summary: Map CSV columns
+      summary: Torii Map CSV columns
       description: >-
         Maps CSV columns to Torii fields for manual parsing of uploaded files.
       tags:
@@ -497,7 +497,7 @@ paths:
   /services/sync/custom:
     post:
       operationId: syncCustomIntegration
-      summary: Sync custom integration
+      summary: Torii Sync custom integration
       description: >-
         Triggers a sync of custom integration data, pushing user and license
         data into Torii.
@@ -573,7 +573,7 @@ paths:
   /workflows/actionExecutions:
     get:
       operationId: getWorkflowActionExecutions
-      summary: List workflow action executions
+      summary: Torii List workflow action executions
       description: Returns a list of workflow action executions.
       tags:
         - Services
@@ -628,7 +628,7 @@ paths:
   /scim/v2/Users:
     get:
       operationId: listScimUsers
-      summary: List SCIM users
+      summary: Torii List SCIM users
       description: >-
         List users via SCIM 2.0 protocol. Default results per page is 100, with
         a maximum of 200.
@@ -679,7 +679,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createScimUser
-      summary: Create SCIM user
+      summary: Torii Create SCIM user
       description: Creates a new user via SCIM 2.0 protocol.
       tags:
         - SCIM
@@ -703,7 +703,7 @@ paths:
   /scim/v2/Users/{idUser}:
     get:
       operationId: getScimUser
-      summary: Get SCIM user
+      summary: Torii Get SCIM user
       description: Returns a specific user by ID via SCIM 2.0 protocol.
       tags:
         - SCIM
@@ -727,7 +727,7 @@ paths:
           description: User not found.
     patch:
       operationId: patchScimUser
-      summary: Patch SCIM user
+      summary: Torii Patch SCIM user
       description: Partially updates a user via SCIM 2.0 protocol.
       tags:
         - SCIM
@@ -777,7 +777,7 @@ paths:
           description: User not found.
     delete:
       operationId: deleteScimUser
-      summary: Delete SCIM user
+      summary: Torii Delete SCIM user
       description: Deletes a user via SCIM 2.0 protocol.
       tags:
         - SCIM
