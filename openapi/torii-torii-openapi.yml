@@ -22,22 +22,20 @@ security:
 tags:
   - name: Apps
     description: Manage applications discovered and tracked in your organization.
-  - name: Users
-    description: Manage users in your organization.
-  - name: Contracts
-    description: Manage SaaS contracts and renewal information.
   - name: Audit
     description: Retrieve admin audit log entries.
+  - name: Contracts
+    description: Manage SaaS contracts and renewal information.
   - name: Files
     description: Upload and manage files.
   - name: Metadata
     description: Retrieve field metadata for apps, users, and contracts.
   - name: Parsings
     description: Manage file parsing and column mapping.
-  - name: Services
-    description: Custom integration sync services.
   - name: SCIM
     description: SCIM 2.0 user provisioning endpoints.
+  - name: Users
+    description: Manage users in your organization.
 paths:
   /apps:
     get:
@@ -501,8 +499,7 @@ paths:
       description: >-
         Triggers a sync of custom integration data, pushing user and license
         data into Torii.
-      tags:
-        - Services
+      tags: []
       parameters:
         - $ref: '#/components/parameters/apiVersion'
       requestBody:
@@ -575,8 +572,7 @@ paths:
       operationId: getWorkflowActionExecutions
       summary: Torii List workflow action executions
       description: Returns a list of workflow action executions.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: sort
           in: query
