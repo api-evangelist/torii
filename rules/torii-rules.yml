@@ -1,0 +1,106 @@
+extends: spectral:oas
+
+rules:
+  # Torii API operation summaries start with "Torii" prefix
+  torii-operation-summary-prefix:
+    description: Operation summaries should start with "Torii" prefix
+    message: "Operation summary '{{value}}' should start with 'Torii'"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Torii [A-Z]"
+
+  # All operations must have operationId
+  torii-operation-id-required:
+    description: All operations must have an operationId
+    message: "Operation is missing an operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  # All operations must have a summary
+  torii-operation-summary-required:
+    description: All operations must have a summary
+    message: "Operation is missing a summary"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  # Bearer authentication must be defined
+  torii-bearer-auth-defined:
+    description: BearerAuth security scheme must be defined
+    message: "bearerAuth security scheme should be defined"
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      field: bearerAuth
+      function: truthy
+
+  # X-API-Version header parameter should be documented consistently
+  torii-api-version-header:
+    description: API version header should be consistently defined via $ref
+    message: "Operations should reference the apiVersion parameter"
+    severity: hint
+    given: "$.paths[*][get,post,put,patch,delete].parameters[?(@.name == 'X-API-Version')]"
+    then:
+      field: "$ref"
+      function: truthy
+
+  # GET list endpoints should support pagination parameters
+  torii-pagination-parameters:
+    description: Collection GET endpoints should support size and cursor pagination
+    message: "List endpoints should document pagination parameters (size, cursor)"
+    severity: warn
+    given: "$.paths[?(!@property.match(/\\{/))]..get.parameters[?(@.name=='size')]"
+    then:
+      field: schema.type
+      function: enumeration
+      functionOptions:
+        values:
+          - integer
+
+  # Responses should document 401 Unauthorized
+  torii-unauthorized-response:
+    description: Protected endpoints should document 401 Unauthorized response
+    message: "Endpoint should document 401 Unauthorized response"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "401"
+      function: truthy
+
+  # Responses should document 429 Rate Limited
+  torii-rate-limited-response:
+    description: Endpoints should document 429 Rate Limited response
+    message: "Endpoint should document 429 Rate Limited response"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "429"
+      function: truthy
+
+  # PUT/POST/PATCH request bodies should be marked required
+  torii-request-body-required:
+    description: Request bodies for write operations must be marked required
+    message: "Request body should be marked required=true"
+    severity: error
+    given: "$.paths[*][post,put,patch].requestBody"
+    then:
+      field: required
+      function: truthy
+
+  # Path parameters should have descriptions
+  torii-path-param-description:
+    description: Path parameters should have descriptions
+    message: "Path parameter '{{value}}' is missing a description"
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in=='path')]"
+    then:
+      field: description
+      function: truthy

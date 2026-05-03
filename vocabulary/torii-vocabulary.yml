@@ -1,0 +1,258 @@
+vocabulary:
+  name: Torii Vocabulary
+  description: >-
+    Domain vocabulary and taxonomy for the Torii SaaS Management Platform.
+    Covers SaaS governance concepts, application lifecycle, user management,
+    contract management, compliance, and platform capabilities.
+  provider: Torii
+  url: https://www.toriihq.com
+  version: "1.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+terms:
+  - term: SaaS Management Platform (SMP)
+    definition: >-
+      A centralized platform for discovering, managing, and optimizing an
+      organization's SaaS application portfolio. Torii is an SMP that provides
+      visibility into app usage, costs, licenses, and user access.
+    tags:
+      - Core
+      - Platform
+    relatedTerms:
+      - Shadow IT
+      - App Discovery
+      - License Management
+
+  - term: App Discovery
+    definition: >-
+      The automated process of identifying all SaaS applications in use
+      across an organization, including apps that IT has not formally approved.
+      Torii discovers apps through identity provider integrations, browser
+      extensions, and SSO login data.
+    tags:
+      - Core
+      - Shadow IT
+    relatedTerms:
+      - Shadow IT
+      - SaaS Management Platform
+
+  - term: Shadow IT
+    definition: >-
+      SaaS applications adopted by employees without formal IT approval or
+      knowledge. Shadow IT creates security, compliance, and cost risks.
+      Torii helps organizations discover and manage shadow IT.
+    tags:
+      - Security
+      - Compliance
+      - Shadow IT
+    relatedTerms:
+      - App Discovery
+      - App State
+
+  - term: App State
+    definition: >-
+      The lifecycle status of a SaaS application in an organization. Torii
+      tracks three states: discovered (found but not reviewed), managed
+      (formally approved and tracked), and closed (decommissioned).
+    tags:
+      - Core
+      - Apps
+    example: "discovered, managed, or closed"
+    relatedTerms:
+      - App Discovery
+
+  - term: License Management
+    definition: >-
+      Tracking the total number of SaaS licenses purchased vs. actively
+      used to identify waste and optimization opportunities. Torii surfaces
+      license utilization data to reduce unnecessary spend.
+    tags:
+      - Cost Optimization
+      - Licenses
+    relatedTerms:
+      - Contract
+      - Annual Cost
+
+  - term: Contract
+    definition: >-
+      A formal agreement for a SaaS subscription including start date, end
+      date, renewal date, annual cost, and number of licenses. Torii tracks
+      contracts to prevent surprise auto-renewals and manage vendor relationships.
+    tags:
+      - Core
+      - Contracts
+    relatedTerms:
+      - Renewal Date
+      - License Management
+
+  - term: Renewal Date
+    definition: >-
+      The date on which a SaaS contract automatically renews or requires
+      renegotiation. Torii provides alerts before renewal dates to enable
+      timely decisions about contract continuation, negotiation, or cancellation.
+    tags:
+      - Contracts
+    relatedTerms:
+      - Contract
+
+  - term: Annual Cost
+    definition: >-
+      The total yearly spend on a SaaS application, used in Torii to calculate
+      ROI, identify overspend, and surface cost optimization opportunities.
+    tags:
+      - Cost Optimization
+      - Contracts
+    relatedTerms:
+      - Contract
+      - License Management
+
+  - term: Audit Log
+    definition: >-
+      A chronological record of administrative actions performed within the
+      Torii platform, capturing who did what and when. Used for compliance,
+      security reviews, and change tracking.
+    tags:
+      - Compliance
+      - Audit
+    relatedTerms:
+      - Compliance
+
+  - term: Custom Field
+    definition: >-
+      An organization-defined metadata field added to apps, users, or
+      contracts in Torii. Custom fields allow organizations to capture
+      business-specific data like risk rating, business unit, or data
+      classification.
+    tags:
+      - Customization
+    relatedTerms:
+      - App
+      - User
+      - Contract
+
+  - term: Custom Integration
+    definition: >-
+      A mechanism to push user and license data from applications not
+      natively integrated with Torii via the /services/sync/custom API
+      endpoint. Enables SaaS visibility for proprietary or internal tools.
+    tags:
+      - Integration
+    relatedTerms:
+      - App Discovery
+      - License Management
+
+  - term: SCIM
+    definition: >-
+      System for Cross-domain Identity Management — an open standard
+      protocol (version 2.0) used by Torii for automated user provisioning
+      and deprovisioning. Enables identity providers to manage Torii users
+      programmatically.
+    tags:
+      - Identity
+      - Provisioning
+      - SCIM
+    relatedTerms:
+      - User Provisioning
+      - Identity Provider
+
+  - term: User Provisioning
+    definition: >-
+      The automated process of creating and managing user accounts across
+      SaaS applications. Torii supports SCIM 2.0 for provisioning users
+      and integrates with identity providers for automated onboarding and
+      offboarding.
+    tags:
+      - Identity
+      - Automation
+    relatedTerms:
+      - SCIM
+      - Offboarding
+
+  - term: Offboarding
+    definition: >-
+      The process of removing an employee's access to all SaaS applications
+      when they leave the organization. Torii automates offboarding workflows
+      to prevent security gaps from lingering account access.
+    tags:
+      - Security
+      - Automation
+    relatedTerms:
+      - User Provisioning
+      - Workflow
+
+  - term: Workflow
+    definition: >-
+      An automated process configured in Torii that triggers actions based
+      on events or conditions (e.g., automatically revoke access when a user
+      is deactivated in the IdP). Torii provides 20+ built-in workflow actions.
+    tags:
+      - Automation
+    relatedTerms:
+      - Offboarding
+      - Workflow Action Execution
+
+  - term: Workflow Action Execution
+    definition: >-
+      A record of a specific workflow action that was triggered and executed
+      in Torii, capturing status, timing, and outcome. Accessible via the
+      /workflows/actionExecutions API endpoint.
+    tags:
+      - Automation
+      - Observability
+    relatedTerms:
+      - Workflow
+
+  - term: File Parsing
+    definition: >-
+      The process of uploading a CSV, Excel, or other file to Torii and
+      mapping its columns to Torii fields for bulk data import. Supports
+      importing app lists, user data, or contract information.
+    tags:
+      - Data Import
+    relatedTerms:
+      - Custom Integration
+
+  - term: Cursor Pagination
+    definition: >-
+      The pagination method used by the Torii API, where a cursor string
+      from one response is passed as a parameter in the next request to
+      retrieve the following page of results.
+    tags:
+      - API
+    relatedTerms:
+      - API
+
+  - term: Identity Provider (IdP)
+    definition: >-
+      A service that manages user identity and authentication (e.g., Okta,
+      Microsoft Entra ID, Google Workspace). Torii integrates with IdPs to
+      discover app usage, automate provisioning, and enforce access policies.
+    tags:
+      - Identity
+      - Integration
+    relatedTerms:
+      - SCIM
+      - User Provisioning
+
+tags:
+  - API
+  - Apps
+  - Audit
+  - Automation
+  - Compliance
+  - Contracts
+  - Core
+  - Cost Optimization
+  - Customization
+  - Data Import
+  - Identity
+  - Integration
+  - Licenses
+  - Observability
+  - Platform
+  - Provisioning
+  - SCIM
+  - Security
+  - Shadow IT
+  - Users

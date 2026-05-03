@@ -1,0 +1,65 @@
+{
+  "name": "ToriiApp",
+  "description": "Structure of a Torii SaaS Application object as returned from the Torii API.",
+  "type": "object",
+  "fields": [
+    { "name": "id", "type": "string", "required": true, "description": "Unique identifier for the app." },
+    { "name": "name", "type": "string", "required": true, "description": "Name of the application." },
+    { "name": "category", "type": "string", "required": false, "description": "Application category (e.g., HR, Engineering, Marketing)." },
+    { "name": "state", "type": "string", "required": false, "enum": ["discovered", "managed", "closed"], "description": "Lifecycle state of the app in the organization." },
+    { "name": "url", "type": "string", "format": "uri", "required": false, "description": "Application URL." },
+    { "name": "activeUsers", "type": "integer", "required": false, "description": "Number of active users in the last 30 days." },
+    { "name": "totalUsers", "type": "integer", "required": false, "description": "Total number of users with access." },
+    { "name": "totalLicenses", "type": "integer", "required": false, "description": "Total number of licenses purchased." },
+    { "name": "annualCost", "type": "number", "required": false, "description": "Annual cost of the application in the organization's currency." },
+    { "name": "owner", "type": "string", "required": false, "description": "Application owner (user name or email)." },
+    { "name": "createdAt", "type": "string", "format": "date-time", "required": false, "description": "When the app was first discovered." }
+  ],
+  "relatedObjects": [
+    {
+      "name": "User",
+      "description": "Organization user tracked in Torii.",
+      "fields": [
+        { "name": "id", "type": "string", "description": "Unique user identifier." },
+        { "name": "email", "type": "string", "format": "email", "description": "User email address." },
+        { "name": "firstName", "type": "string", "description": "First name." },
+        { "name": "lastName", "type": "string", "description": "Last name." },
+        { "name": "status", "type": "string", "description": "User status (active, inactive)." },
+        { "name": "department", "type": "string", "description": "Department." },
+        { "name": "isExternal", "type": "boolean", "description": "External user flag." },
+        { "name": "appsCount", "type": "integer", "description": "Number of apps the user has access to." },
+        { "name": "createdAt", "type": "string", "format": "date-time", "description": "When the user was created." }
+      ]
+    },
+    {
+      "name": "Contract",
+      "description": "SaaS contract tracked in Torii.",
+      "fields": [
+        { "name": "id", "type": "string", "description": "Contract identifier." },
+        { "name": "appId", "type": "string", "description": "Associated app ID." },
+        { "name": "appName", "type": "string", "description": "Associated app name." },
+        { "name": "name", "type": "string", "description": "Contract name." },
+        { "name": "status", "type": "string", "description": "Contract status." },
+        { "name": "startDate", "type": "string", "format": "date", "description": "Contract start date." },
+        { "name": "endDate", "type": "string", "format": "date", "description": "Contract end date." },
+        { "name": "renewalDate", "type": "string", "format": "date", "description": "Renewal date." },
+        { "name": "annualCost", "type": "number", "description": "Annual cost." },
+        { "name": "currency", "type": "string", "description": "Currency code (e.g., USD)." },
+        { "name": "owner", "type": "string", "description": "Contract owner." }
+      ]
+    },
+    {
+      "name": "AuditLogEntry",
+      "description": "Admin audit log entry from Torii.",
+      "fields": [
+        { "name": "id", "type": "string", "description": "Audit entry identifier." },
+        { "name": "action", "type": "string", "description": "Action performed." },
+        { "name": "actor", "type": "string", "description": "User who performed the action." },
+        { "name": "actorEmail", "type": "string", "format": "email", "description": "Actor's email." },
+        { "name": "target", "type": "string", "description": "Target of the action." },
+        { "name": "details", "type": "object", "description": "Additional action details." },
+        { "name": "createdAt", "type": "string", "format": "date-time", "description": "When the action occurred." }
+      ]
+    }
+  ]
+}

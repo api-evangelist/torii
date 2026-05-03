@@ -1,0 +1,48 @@
+{
+  "title": "Torii List Apps - Example Response",
+  "description": "Example response from GET /apps returning discovered and managed SaaS applications.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.toriihq.com/v1.0/apps?state=managed&size=2",
+    "headers": {
+      "Authorization": "Bearer {TORII_API_KEY}",
+      "X-API-Version": "1.1"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data": [
+        {
+          "id": "app-001",
+          "name": "Slack",
+          "category": "Communication",
+          "state": "managed",
+          "url": "https://slack.com",
+          "activeUsers": 245,
+          "totalUsers": 312,
+          "totalLicenses": 350,
+          "annualCost": 84000,
+          "owner": "it-admin@company.com",
+          "createdAt": "2024-01-15T09:00:00Z"
+        },
+        {
+          "id": "app-002",
+          "name": "Salesforce",
+          "category": "CRM",
+          "state": "managed",
+          "url": "https://salesforce.com",
+          "activeUsers": 89,
+          "totalUsers": 120,
+          "totalLicenses": 120,
+          "annualCost": 216000,
+          "owner": "sales-ops@company.com",
+          "createdAt": "2023-06-01T08:00:00Z"
+        }
+      ]
+    }
+  }
+}
