@@ -1,292 +1,556 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Torii SaaS Governance"
-  description: "Workflow capability for SaaS governance and IT management using Torii — covering shadow IT discovery, user lifecycle management, contract renewals, spend optimization, compliance auditing, and custom integration data sync."
+  label: Torii SaaS Governance
+  description: Workflow capability for SaaS governance and IT management using Torii — covering shadow IT discovery, user
+    lifecycle management, contract renewals, spend optimization, compliance auditing, and custom integration data sync.
   tags:
-    - Apps
-    - Audit
-    - Compliance
-    - Contracts
-    - Cost Optimization
-    - Governance
-    - IT Management
-    - SaaS Management
-    - Shadow IT
-    - Torii
-    - Users
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Apps
+  - Audit
+  - Compliance
+  - Contracts
+  - Cost Optimization
+  - Governance
+  - IT Management
+  - SaaS Management
+  - Shadow IT
+  - Torii
+  - Users
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      TORII_API_KEY: TORII_API_KEY
-
+- namespace: env
+  keys:
+    TORII_API_KEY: TORII_API_KEY
 capability:
   consumes:
-    - import: torii-saas-management
-      location: ./shared/torii-saas-management.yaml
-
+  - type: http
+    namespace: torii-saas-management
+    baseUri: https://api.toriihq.com/v1.0
+    description: Torii SaaS Management Platform API for apps, users, contracts, and more.
+    authentication:
+      type: bearer
+      token: '{{TORII_API_KEY}}'
+    resources:
+    - name: apps
+      path: /apps
+      description: Manage applications discovered and tracked in the organization.
+      operations:
+      - name: list-apps
+        method: GET
+        description: List all applications in the organization with optional filtering.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated fields to include.
+        - name: state
+          in: query
+          type: string
+          required: false
+          description: Filter by app state (discovered, managed, closed).
+        - name: size
+          in: query
+          type: integer
+          required: false
+          description: Page size.
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: apps-metadata
+      path: /apps/metadata
+      description: Retrieve app field metadata.
+      operations:
+      - name: get-apps-metadata
+        method: GET
+        description: List app fields (predefined and custom).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users
+      path: /users
+      description: Manage organization users.
+      operations:
+      - name: list-users
+        method: GET
+        description: List all users in the organization.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated fields to include.
+        - name: size
+          in: query
+          type: integer
+          required: false
+          description: Page size.
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-metadata
+      path: /users/metadata
+      description: Retrieve user field metadata.
+      operations:
+      - name: get-users-metadata
+        method: GET
+        description: List user fields (predefined and custom).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contracts
+      path: /contracts/{idContract}
+      description: Manage SaaS contracts and renewal information.
+      operations:
+      - name: get-contract
+        method: GET
+        description: Get details of a specific contract.
+        inputParameters:
+        - name: idContract
+          in: path
+          type: string
+          required: true
+          description: Contract unique identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-contract
+        method: PUT
+        description: Update an existing contract.
+        inputParameters:
+        - name: idContract
+          in: path
+          type: string
+          required: true
+          description: Contract unique identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            status: '{{tools.status}}'
+            renewalDate: '{{tools.renewalDate}}'
+            annualCost: '{{tools.annualCost}}'
+    - name: contracts-metadata
+      path: /contracts/metadata
+      description: Retrieve contract field metadata.
+      operations:
+      - name: get-contracts-metadata
+        method: GET
+        description: List contract fields (predefined and custom).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: audit
+      path: /audit
+      description: Retrieve admin audit log entries.
+      operations:
+      - name: get-audit-logs
+        method: GET
+        description: Retrieve up to 1,000 admin audit log entries per request.
+        inputParameters:
+        - name: size
+          in: query
+          type: integer
+          required: false
+          description: Number of results (max 1000).
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: files-upload
+      path: /files/upload
+      description: Upload files to Torii (up to 3MB).
+      operations:
+      - name: upload-file
+        method: POST
+        description: Upload a small file (up to 3MB) as multipart form data.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: file-url
+      path: /files/url
+      description: Get a secure S3 upload URL for large files.
+      operations:
+      - name: get-file-upload-url
+        method: GET
+        description: Get a temporary S3 URL for uploading larger files.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: custom-integration
+      path: /services/sync/custom
+      description: Sync custom integration data.
+      operations:
+      - name: sync-custom-integration
+        method: POST
+        description: Push user and license data from a custom integration into Torii.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            appName: '{{tools.appName}}'
+            users: '{{tools.users}}'
+            licenses: '{{tools.licenses}}'
+    - name: workflow-executions
+      path: /workflows/actionExecutions
+      description: Monitor workflow action executions.
+      operations:
+      - name: list-workflow-executions
+        method: GET
+        description: List workflow action execution history.
+        inputParameters:
+        - name: size
+          in: query
+          type: integer
+          required: false
+          description: Page size.
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scim-users
+      path: /scim/v2/Users
+      description: SCIM 2.0 user provisioning.
+      operations:
+      - name: list-scim-users
+        method: GET
+        description: List users via SCIM 2.0 (up to 200 per page).
+        inputParameters:
+        - name: startIndex
+          in: query
+          type: integer
+          required: false
+          description: 1-based start index.
+        - name: count
+          in: query
+          type: integer
+          required: false
+          description: Results per page (max 200).
+        - name: filter
+          in: query
+          type: string
+          required: false
+          description: SCIM filter expression.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-scim-user
+        method: POST
+        description: Create a new user via SCIM 2.0.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            userName: '{{tools.userName}}'
+            name: '{{tools.name}}'
+            emails: '{{tools.emails}}'
+            active: '{{tools.active}}'
   exposes:
-    - type: rest
-      port: 8080
-      namespace: torii-saas-governance-api
-      description: "Unified REST API for SaaS governance workflows — discovery, user management, contract tracking, and compliance."
-      resources:
-        - path: /v1/apps
-          name: apps
-          description: "Discover and manage SaaS applications."
-          operations:
-            - method: GET
-              name: list-apps
-              description: "List all apps discovered in the organization, including shadow IT."
-              call: "torii-saas-management.list-apps"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/users
-          name: users
-          description: "User management and visibility."
-          operations:
-            - method: GET
-              name: list-users
-              description: "List all users and their app access."
-              call: "torii-saas-management.list-users"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/contracts/{idContract}
-          name: contract
-          description: "SaaS contract management."
-          operations:
-            - method: GET
-              name: get-contract
-              description: "Get a specific SaaS contract with renewal details."
-              call: "torii-saas-management.get-contract"
-              with:
-                idContract: "rest.idContract"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: PUT
-              name: update-contract
-              description: "Update contract details including renewal date and cost."
-              call: "torii-saas-management.update-contract"
-              with:
-                idContract: "rest.idContract"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/audit
-          name: audit
-          description: "Admin audit logs for compliance."
-          operations:
-            - method: GET
-              name: get-audit-logs
-              description: "Retrieve admin audit log entries for compliance review."
-              call: "torii-saas-management.get-audit-logs"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/integrations/sync
-          name: custom-integration
-          description: "Custom app data ingestion."
-          operations:
-            - method: POST
-              name: sync-custom-integration
-              description: "Push user and license data from a custom app into Torii."
-              call: "torii-saas-management.sync-custom-integration"
-              with:
-                appName: "rest.appName"
-                users: "rest.users"
-                licenses: "rest.licenses"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/workflows/executions
-          name: workflow-executions
-          description: "Workflow automation history."
-          operations:
-            - method: GET
-              name: list-workflow-executions
-              description: "List workflow action execution history."
-              call: "torii-saas-management.list-workflow-executions"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/scim/users
-          name: scim-users
-          description: "SCIM 2.0 user provisioning."
-          operations:
-            - method: GET
-              name: list-scim-users
-              description: "List provisioned users via SCIM 2.0."
-              call: "torii-saas-management.list-scim-users"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: provision-user
-              description: "Provision a new user via SCIM 2.0."
-              call: "torii-saas-management.create-scim-user"
-              with:
-                userName: "rest.userName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: torii-saas-governance-mcp
-      transport: http
-      description: "MCP server for AI-assisted SaaS governance and IT management using Torii."
-      tools:
-        - name: discover-apps
-          description: "Discover all SaaS applications in use across the organization, including shadow IT, managed apps, and closed apps."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.list-apps"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-app-metadata
-          description: "Retrieve available field metadata for SaaS applications in Torii."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.get-apps-metadata"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-users
-          description: "List all users in the organization with their SaaS app access details."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.list-users"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-user-metadata
-          description: "Retrieve available field metadata for users in Torii."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.get-users-metadata"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-contract
-          description: "Get full details of a SaaS contract including cost and renewal date."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.get-contract"
-          with:
-            idContract: "tools.idContract"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-contract
-          description: "Update a SaaS contract with new renewal date, status, or annual cost."
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "torii-saas-management.update-contract"
-          with:
-            idContract: "tools.idContract"
-            renewalDate: "tools.renewalDate"
-            annualCost: "tools.annualCost"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-contract-metadata
-          description: "Retrieve available field metadata for contracts in Torii."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.get-contracts-metadata"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-audit-logs
-          description: "Retrieve admin audit log entries for compliance review — up to 1,000 per request."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.get-audit-logs"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: sync-custom-app-data
-          description: "Push user and license data from a custom application into Torii for visibility."
-          hints:
-            readOnly: false
-            idempotent: false
-          call: "torii-saas-management.sync-custom-integration"
-          with:
-            appName: "tools.appName"
-            users: "tools.users"
-            licenses: "tools.licenses"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-workflow-executions
-          description: "List Torii workflow automation execution history and status."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.list-workflow-executions"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-scim-users
-          description: "List users provisioned via SCIM 2.0 in Torii."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "torii-saas-management.list-scim-users"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: provision-scim-user
-          description: "Provision a new user into Torii via SCIM 2.0 protocol."
-          hints:
-            readOnly: false
-            idempotent: false
-          call: "torii-saas-management.create-scim-user"
-          with:
-            userName: "tools.userName"
-            name: "tools.name"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-scim-user
-          description: "Deprovision (delete) a user from Torii via SCIM 2.0."
-          hints:
-            readOnly: false
-            destructive: true
-            idempotent: true
-          call: "torii-saas-management.delete-scim-user"
-          with:
-            idUser: "tools.idUser"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-file-upload-url
-          description: "Get a secure temporary S3 URL for uploading files to Torii."
-          hints:
-            readOnly: true
-            idempotent: false
-          call: "torii-saas-management.get-file-upload-url"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: torii-saas-governance-api
+    description: Unified REST API for SaaS governance workflows — discovery, user management, contract tracking, and compliance.
+    resources:
+    - path: /v1/apps
+      name: apps
+      description: Discover and manage SaaS applications.
+      operations:
+      - method: GET
+        name: list-apps
+        description: List all apps discovered in the organization, including shadow IT.
+        call: torii-saas-management.list-apps
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users
+      name: users
+      description: User management and visibility.
+      operations:
+      - method: GET
+        name: list-users
+        description: List all users and their app access.
+        call: torii-saas-management.list-users
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contracts/{idContract}
+      name: contract
+      description: SaaS contract management.
+      operations:
+      - method: GET
+        name: get-contract
+        description: Get a specific SaaS contract with renewal details.
+        call: torii-saas-management.get-contract
+        with:
+          idContract: rest.idContract
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update-contract
+        description: Update contract details including renewal date and cost.
+        call: torii-saas-management.update-contract
+        with:
+          idContract: rest.idContract
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/audit
+      name: audit
+      description: Admin audit logs for compliance.
+      operations:
+      - method: GET
+        name: get-audit-logs
+        description: Retrieve admin audit log entries for compliance review.
+        call: torii-saas-management.get-audit-logs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/integrations/sync
+      name: custom-integration
+      description: Custom app data ingestion.
+      operations:
+      - method: POST
+        name: sync-custom-integration
+        description: Push user and license data from a custom app into Torii.
+        call: torii-saas-management.sync-custom-integration
+        with:
+          appName: rest.appName
+          users: rest.users
+          licenses: rest.licenses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workflows/executions
+      name: workflow-executions
+      description: Workflow automation history.
+      operations:
+      - method: GET
+        name: list-workflow-executions
+        description: List workflow action execution history.
+        call: torii-saas-management.list-workflow-executions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scim/users
+      name: scim-users
+      description: SCIM 2.0 user provisioning.
+      operations:
+      - method: GET
+        name: list-scim-users
+        description: List provisioned users via SCIM 2.0.
+        call: torii-saas-management.list-scim-users
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provision-user
+        description: Provision a new user via SCIM 2.0.
+        call: torii-saas-management.create-scim-user
+        with:
+          userName: rest.userName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: torii-saas-governance-mcp
+    transport: http
+    description: MCP server for AI-assisted SaaS governance and IT management using Torii.
+    tools:
+    - name: discover-apps
+      description: Discover all SaaS applications in use across the organization, including shadow IT, managed apps, and closed
+        apps.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.list-apps
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-app-metadata
+      description: Retrieve available field metadata for SaaS applications in Torii.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.get-apps-metadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-users
+      description: List all users in the organization with their SaaS app access details.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.list-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-metadata
+      description: Retrieve available field metadata for users in Torii.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.get-users-metadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contract
+      description: Get full details of a SaaS contract including cost and renewal date.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.get-contract
+      with:
+        idContract: tools.idContract
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-contract
+      description: Update a SaaS contract with new renewal date, status, or annual cost.
+      hints:
+        readOnly: false
+        idempotent: true
+      call: torii-saas-management.update-contract
+      with:
+        idContract: tools.idContract
+        renewalDate: tools.renewalDate
+        annualCost: tools.annualCost
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contract-metadata
+      description: Retrieve available field metadata for contracts in Torii.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.get-contracts-metadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-audit-logs
+      description: Retrieve admin audit log entries for compliance review — up to 1,000 per request.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.get-audit-logs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sync-custom-app-data
+      description: Push user and license data from a custom application into Torii for visibility.
+      hints:
+        readOnly: false
+        idempotent: false
+      call: torii-saas-management.sync-custom-integration
+      with:
+        appName: tools.appName
+        users: tools.users
+        licenses: tools.licenses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-workflow-executions
+      description: List Torii workflow automation execution history and status.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.list-workflow-executions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-scim-users
+      description: List users provisioned via SCIM 2.0 in Torii.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: torii-saas-management.list-scim-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provision-scim-user
+      description: Provision a new user into Torii via SCIM 2.0 protocol.
+      hints:
+        readOnly: false
+        idempotent: false
+      call: torii-saas-management.create-scim-user
+      with:
+        userName: tools.userName
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-scim-user
+      description: Deprovision (delete) a user from Torii via SCIM 2.0.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: torii-saas-management.delete-scim-user
+      with:
+        idUser: tools.idUser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-file-upload-url
+      description: Get a secure temporary S3 URL for uploading files to Torii.
+      hints:
+        readOnly: true
+        idempotent: false
+      call: torii-saas-management.get-file-upload-url
+      outputParameters:
+      - type: object
+        mapping: $.
