@@ -71,6 +71,24 @@ description: >-
   operationalize every app. Torii integrates with 180+ SaaS applications to provide
   license and usage data, automate user onboarding and offboarding workflows, manage
   SaaS contracts and renewals, and maintain compliance audit trails.
+integrations:
+  - name: navbar-logo_white.svg
+  - name: logo_torii_new.svg
+  - name: Microsoft 365 Torii Integration
+  - name: Iru (Previously Kandji) Torii Integration
+  - name: JumpCloud MDM Torii Integration
+  - name: Slack Torii Integration
+  - name: Ramp Torii Integration
+  - name: Coupa Torii Integration
+  - name: Okta Torii Integration
+  - name: Workday HCM Torii Integration
+  - name: Claude Developer Torii Integration
+  - name: Zoom Torii Integration
+  - name: Zip Torii Integration
+  - name: Microsoft Entra ID Torii Integration
+  - name: Concur Torii Integration
+  - name: Zapier Torii Integration
+  - name: 1Password Torii Integration
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
