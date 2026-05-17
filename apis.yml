@@ -59,7 +59,7 @@ tags:
   - Governance
   - IT Management
   - SaaS Management
-type: Contract
+kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-07-15'
@@ -132,7 +132,7 @@ common:
     type: Login
   - name: Torii JSON-LD Context
     url: json-ld/torii-context.jsonld
-    type: JSON-LD
+    type: JSONLD
     description: 'JSON-LD context for Torii SaaS Management domain vocabulary.'
   - name: Torii App JSON Structure
     url: json-structure/torii-app-structure.json
