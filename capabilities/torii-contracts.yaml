@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Torii API — Contracts
+  description: 'Torii API — Contracts. 2 operations. Lead operation: Torii Get contract. Self-contained Naftiko capability
+    covering one Torii business surface.'
+  tags:
+  - Torii
+  - Contracts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TORII_API_KEY: TORII_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: torii-contracts
+    baseUri: https://api.toriihq.com/v1.0
+    description: Torii API — Contracts business capability. Self-contained, no shared references.
+    resources:
+    - name: contracts-idContract
+      path: /contracts/{idContract}
+      operations:
+      - name: getcontract
+        method: GET
+        description: Torii Get contract
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idContract
+          in: path
+          type: string
+          description: The unique identifier of the contract.
+          required: true
+      - name: updatecontract
+        method: PUT
+        description: Torii Update contract
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idContract
+          in: path
+          type: string
+          description: The unique identifier of the contract.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TORII_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: torii-contracts-rest
+    port: 8080
+    description: REST adapter for Torii API — Contracts. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/contracts/{idcontract}
+      name: contracts-idcontract
+      description: REST surface for contracts-idContract.
+      operations:
+      - method: GET
+        name: getcontract
+        description: Torii Get contract
+        call: torii-contracts.getcontract
+        with:
+          idContract: rest.idContract
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecontract
+        description: Torii Update contract
+        call: torii-contracts.updatecontract
+        with:
+          idContract: rest.idContract
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: torii-contracts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Torii API — Contracts. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: torii-get-contract
+      description: Torii Get contract
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: torii-contracts.getcontract
+      with:
+        idContract: tools.idContract
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: torii-update-contract
+      description: Torii Update contract
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: torii-contracts.updatecontract
+      with:
+        idContract: tools.idContract
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

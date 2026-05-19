@@ -1,0 +1,245 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Torii API — SCIM
+  description: 'Torii API — SCIM. 5 operations. Lead operation: Torii List SCIM users. Self-contained Naftiko capability covering
+    one Torii business surface.'
+  tags:
+  - Torii
+  - SCIM
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TORII_API_KEY: TORII_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: torii-scim
+    baseUri: https://api.toriihq.com/v1.0
+    description: Torii API — SCIM business capability. Self-contained, no shared references.
+    resources:
+    - name: scim-v2-Users
+      path: /scim/v2/Users
+      operations:
+      - name: listscimusers
+        method: GET
+        description: Torii List SCIM users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startIndex
+          in: query
+          type: integer
+          description: The 1-based index of the first result.
+        - name: count
+          in: query
+          type: integer
+          description: Number of results per page (max 200).
+        - name: filter
+          in: query
+          type: string
+          description: SCIM filter expression (e.g. userName eq "user@example.com").
+      - name: createscimuser
+        method: POST
+        description: Torii Create SCIM user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: scim-v2-Users-idUser
+      path: /scim/v2/Users/{idUser}
+      operations:
+      - name: getscimuser
+        method: GET
+        description: Torii Get SCIM user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idUser
+          in: path
+          type: string
+          description: The unique SCIM user identifier.
+          required: true
+      - name: patchscimuser
+        method: PATCH
+        description: Torii Patch SCIM user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idUser
+          in: path
+          type: string
+          description: The unique SCIM user identifier.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletescimuser
+        method: DELETE
+        description: Torii Delete SCIM user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idUser
+          in: path
+          type: string
+          description: The unique SCIM user identifier.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TORII_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: torii-scim-rest
+    port: 8080
+    description: REST adapter for Torii API — SCIM. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/scim/v2/users
+      name: scim-v2-users
+      description: REST surface for scim-v2-Users.
+      operations:
+      - method: GET
+        name: listscimusers
+        description: Torii List SCIM users
+        call: torii-scim.listscimusers
+        with:
+          startIndex: rest.startIndex
+          count: rest.count
+          filter: rest.filter
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createscimuser
+        description: Torii Create SCIM user
+        call: torii-scim.createscimuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scim/v2/users/{iduser}
+      name: scim-v2-users-iduser
+      description: REST surface for scim-v2-Users-idUser.
+      operations:
+      - method: GET
+        name: getscimuser
+        description: Torii Get SCIM user
+        call: torii-scim.getscimuser
+        with:
+          idUser: rest.idUser
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchscimuser
+        description: Torii Patch SCIM user
+        call: torii-scim.patchscimuser
+        with:
+          idUser: rest.idUser
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletescimuser
+        description: Torii Delete SCIM user
+        call: torii-scim.deletescimuser
+        with:
+          idUser: rest.idUser
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: torii-scim-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Torii API — SCIM. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: torii-list-scim-users
+      description: Torii List SCIM users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: torii-scim.listscimusers
+      with:
+        startIndex: tools.startIndex
+        count: tools.count
+        filter: tools.filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: torii-create-scim-user
+      description: Torii Create SCIM user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: torii-scim.createscimuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: torii-get-scim-user
+      description: Torii Get SCIM user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: torii-scim.getscimuser
+      with:
+        idUser: tools.idUser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: torii-patch-scim-user
+      description: Torii Patch SCIM user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: torii-scim.patchscimuser
+      with:
+        idUser: tools.idUser
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: torii-delete-scim-user
+      description: Torii Delete SCIM user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: torii-scim.deletescimuser
+      with:
+        idUser: tools.idUser
+      outputParameters:
+      - type: object
+        mapping: $.

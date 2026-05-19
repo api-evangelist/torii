@@ -1,0 +1,161 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Torii API — Metadata
+  description: 'Torii API — Metadata. 3 operations. Lead operation: Torii List app fields metadata. Self-contained Naftiko
+    capability covering one Torii business surface.'
+  tags:
+  - Torii
+  - Metadata
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TORII_API_KEY: TORII_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: torii-metadata
+    baseUri: https://api.toriihq.com/v1.0
+    description: Torii API — Metadata business capability. Self-contained, no shared references.
+    resources:
+    - name: apps-metadata
+      path: /apps/metadata
+      operations:
+      - name: getappsmetadata
+        method: GET
+        description: Torii List app fields metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search
+          in: query
+          type: string
+          description: Search by field name or key.
+    - name: contracts-metadata
+      path: /contracts/metadata
+      operations:
+      - name: getcontractsmetadata
+        method: GET
+        description: Torii List contract fields metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search
+          in: query
+          type: string
+          description: Search by field name or key.
+    - name: users-metadata
+      path: /users/metadata
+      operations:
+      - name: getusersmetadata
+        method: GET
+        description: Torii List user fields metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search
+          in: query
+          type: string
+          description: Search by field name or key.
+    authentication:
+      type: bearer
+      token: '{{env.TORII_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: torii-metadata-rest
+    port: 8080
+    description: REST adapter for Torii API — Metadata. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/apps/metadata
+      name: apps-metadata
+      description: REST surface for apps-metadata.
+      operations:
+      - method: GET
+        name: getappsmetadata
+        description: Torii List app fields metadata
+        call: torii-metadata.getappsmetadata
+        with:
+          search: rest.search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contracts/metadata
+      name: contracts-metadata
+      description: REST surface for contracts-metadata.
+      operations:
+      - method: GET
+        name: getcontractsmetadata
+        description: Torii List contract fields metadata
+        call: torii-metadata.getcontractsmetadata
+        with:
+          search: rest.search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/metadata
+      name: users-metadata
+      description: REST surface for users-metadata.
+      operations:
+      - method: GET
+        name: getusersmetadata
+        description: Torii List user fields metadata
+        call: torii-metadata.getusersmetadata
+        with:
+          search: rest.search
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: torii-metadata-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Torii API — Metadata. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: torii-list-app-fields-metadata
+      description: Torii List app fields metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: torii-metadata.getappsmetadata
+      with:
+        search: tools.search
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: torii-list-contract-fields-metadata
+      description: Torii List contract fields metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: torii-metadata.getcontractsmetadata
+      with:
+        search: tools.search
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: torii-list-user-fields-metadata
+      description: Torii List user fields metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: torii-metadata.getusersmetadata
+      with:
+        search: tools.search
+      outputParameters:
+      - type: object
+        mapping: $.
