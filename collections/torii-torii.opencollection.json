@@ -1,0 +1,601 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Torii API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii List apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/apps",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response (e.g. id,name,category)."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter apps by state (e.g. discovered, managed, closed)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns a list of apps used in the organization. Supports filtering via query parameters including custom application fields."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii List app fields metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/apps/metadata",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by field name or key."
+              }
+            ]
+          },
+          "docs": "Lists app fields (predefined and custom), searchable by field name or key."
+        },
+        {
+          "info": {
+            "name": "Torii List user fields metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/users/metadata",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by field name or key."
+              }
+            ]
+          },
+          "docs": "Lists user fields (predefined and custom), searchable by field name or key."
+        },
+        {
+          "info": {
+            "name": "Torii List contract fields metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/contracts/metadata",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by field name or key."
+              }
+            ]
+          },
+          "docs": "Lists contract fields (predefined and custom), searchable by field name or key."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/users",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the list of users in your organization. Supports filtering via query parameters. Rate limit: 100 requests per minute."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contracts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii Get contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/contracts/:idContract",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "idContract",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the contract."
+              }
+            ]
+          },
+          "docs": "Returns details of a specific contract by ID."
+        },
+        {
+          "info": {
+            "name": "Torii Update contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.toriihq.com/v1.0/contracts/:idContract",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "idContract",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the contract."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing contract."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Audit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii Get admin audit logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/audit",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 1000)."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Retrieves admin audit log entries. Supports retrieving up to 1,000 audit log entries per request for efficient bulk data access."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii Upload file (up to 3MB)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.toriihq.com/v1.0/files/upload",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload small files up to 3MB as multipart form data. Supported file types: .csv, .xls, .xlsx, .pdf, .doc, .docx, .png, .jpg, .jpeg, .xml, .json, .zip."
+        },
+        {
+          "info": {
+            "name": "Torii Get file upload URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/files/url",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns a secure, temporary S3 URL for uploading larger files directly."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Parsings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii Get parse request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/parsings/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the parsing request."
+              }
+            ]
+          },
+          "docs": "Returns the status and details of a file parsing request."
+        },
+        {
+          "info": {
+            "name": "Torii Map CSV columns",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.toriihq.com/v1.0/parsings/manual",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Maps CSV columns to Torii fields for manual parsing of uploaded files."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii Sync custom integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.toriihq.com/v1.0/services/sync/custom",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers a sync of custom integration data, pushing user and license data into Torii."
+        },
+        {
+          "info": {
+            "name": "Torii List workflow action executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/workflows/actionExecutions",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination."
+              }
+            ]
+          },
+          "docs": "Returns a list of workflow action executions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SCIM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii List SCIM users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users",
+            "params": [
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "The 1-based index of the first result."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 200)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SCIM filter expression (e.g. userName eq \"user@example.com\")."
+              }
+            ]
+          },
+          "docs": "List users via SCIM 2.0 protocol. Default results per page is 100, with a maximum of 200."
+        },
+        {
+          "info": {
+            "name": "Torii Create SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user via SCIM 2.0 protocol."
+        },
+        {
+          "info": {
+            "name": "Torii Get SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users/:idUser",
+            "params": [
+              {
+                "name": "idUser",
+                "value": "",
+                "type": "path",
+                "description": "The unique SCIM user identifier."
+              }
+            ]
+          },
+          "docs": "Returns a specific user by ID via SCIM 2.0 protocol."
+        },
+        {
+          "info": {
+            "name": "Torii Patch SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users/:idUser",
+            "params": [
+              {
+                "name": "idUser",
+                "value": "",
+                "type": "path",
+                "description": "The unique SCIM user identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a user via SCIM 2.0 protocol."
+        },
+        {
+          "info": {
+            "name": "Torii Delete SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users/:idUser",
+            "params": [
+              {
+                "name": "idUser",
+                "value": "",
+                "type": "path",
+                "description": "The unique SCIM user identifier."
+              }
+            ]
+          },
+          "docs": "Deletes a user via SCIM 2.0 protocol."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,4661 @@
+{
+  "item": [
+    {
+      "id": "4c7c5529-7b3f-4bfb-89e0-6103d26cb0d6",
+      "name": "Apps",
+      "description": {
+        "content": "Manage applications discovered and tracked in your organization.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1d37acb3-0dfd-4f90-b36e-1348d5cd47a1",
+          "name": "Torii List apps",
+          "request": {
+            "name": "Torii List apps",
+            "description": {
+              "content": "Returns a list of apps used in the organization. Supports filtering via query parameters including custom application fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response (e.g. id,name,category)."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter apps by state (e.g. discovered, managed, closed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of results per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Cursor for pagination to retrieve the next page of results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "873d7cdb-c591-4774-b5af-b6d563913bde",
+              "name": "A list of apps.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"string\",\n      \"state\": \"string\",\n      \"url\": \"https://eZcSQONbikIoT.watiCv09mh0hKTTr8rPCNrQnYJdbF0Kb8mU\",\n      \"activeUsers\": 7823,\n      \"totalUsers\": 5296,\n      \"totalLicenses\": 8763,\n      \"annualCost\": 1409.7213662018926,\n      \"owner\": \"string\",\n      \"createdAt\": \"1966-02-04T21:03:32.480Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"string\",\n      \"state\": \"string\",\n      \"url\": \"http://UGlCOttQXMhnqIsrJkXFHZEZAgtmXqVeT.swtpLuJ\",\n      \"activeUsers\": 431,\n      \"totalUsers\": 4153,\n      \"totalLicenses\": 8754,\n      \"annualCost\": 9040.798127345528,\n      \"owner\": \"string\",\n      \"createdAt\": \"1990-02-05T18:14:12.448Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0d3f216-78a1-4608-aac8-4d91eef5eba8",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f041091-3681-4b23-8d69-a887f10e306d",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bb75297d-9630-4165-ac7e-1729f9ab612d",
+      "name": "Audit",
+      "description": {
+        "content": "Retrieve admin audit log entries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8811c2a7-fab1-4fe8-9bab-ffee8b5a9925",
+          "name": "Torii Get admin audit logs",
+          "request": {
+            "name": "Torii Get admin audit logs",
+            "description": {
+              "content": "Retrieves admin audit log entries. Supports retrieving up to 1,000 audit log entries per request for efficient bulk data access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of results per page (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Cursor for pagination to retrieve the next page of results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aa0022e-3eab-4300-a16e-476aaab55c4e",
+              "name": "A list of audit log entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"action\": \"string\",\n      \"actor\": \"string\",\n      \"actorEmail\": \"7oSpZO@gYSZvyWllSOJWeeKvlsjRPiZOyYN.denr\",\n      \"target\": \"string\",\n      \"details\": {},\n      \"createdAt\": \"2024-05-31T03:35:29.057Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"action\": \"string\",\n      \"actor\": \"string\",\n      \"actorEmail\": \"QxPllyfO4e@XZywyfTptqbARiWEzDwFfKJNOLBQFsDY.lp\",\n      \"target\": \"string\",\n      \"details\": {},\n      \"createdAt\": \"2015-07-31T13:16:47.450Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31757367-b10a-4da0-871f-a3f33082eea6",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1f09c56-4ba2-49c8-adda-00299e84505b",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "736ab786-929e-44d3-83e0-0aa566a7ee37",
+      "name": "Contracts",
+      "description": {
+        "content": "Manage SaaS contracts and renewal information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e1cc894-3dd9-4ded-98de-b3aad9fdba56",
+          "name": "Torii Get contract",
+          "request": {
+            "name": "Torii Get contract",
+            "description": {
+              "content": "Returns details of a specific contract by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contracts",
+                ":idContract"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idContract",
+                  "description": "(Required) The unique identifier of the contract."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c022838f-65ea-4b86-973d-aaad2093077a",
+              "name": "Contract details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"appId\": \"string\",\n  \"appName\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"string\",\n  \"startDate\": \"1968-06-27\",\n  \"endDate\": \"1962-11-05\",\n  \"renewalDate\": \"1977-03-23\",\n  \"annualCost\": 6522.031219040458,\n  \"currency\": \"string\",\n  \"owner\": \"string\",\n  \"createdAt\": \"1974-03-22T08:25:30.666Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba7c6b3c-09e4-4b33-8793-a57ecc746a76",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b22e8d44-2bc0-4552-a797-e3a543ce20d6",
+              "name": "Contract not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e65a8ac1-f2fa-45c8-8b42-5a315308b2ba",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b74bdd3f-37c3-4f8e-84db-1010b9662ffd",
+          "name": "Torii Update contract",
+          "request": {
+            "name": "Torii Update contract",
+            "description": {
+              "content": "Updates an existing contract.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contracts",
+                ":idContract"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idContract",
+                  "description": "(Required) The unique identifier of the contract."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "34277032-87ca-41b5-b3c0-5dae45cf6ab5",
+              "name": "Contract updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"appId\": \"string\",\n  \"appName\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"string\",\n  \"startDate\": \"1968-06-27\",\n  \"endDate\": \"1962-11-05\",\n  \"renewalDate\": \"1977-03-23\",\n  \"annualCost\": 6522.031219040458,\n  \"currency\": \"string\",\n  \"owner\": \"string\",\n  \"createdAt\": \"1974-03-22T08:25:30.666Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5442b70-1717-4e3a-875a-403871e992c3",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35199a9a-4ca3-4076-a2ff-3fb4bf63b30b",
+              "name": "Contract not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6610b053-68ef-4d42-a95c-5e0ca5800d2f",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idContract",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "dda4fb24-0948-4a7b-aa71-78a6c96fdb95",
+      "name": "Files",
+      "description": {
+        "content": "Upload and manage files.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "649144d0-0077-4718-b594-7f6c828d8eaa",
+          "name": "Torii Upload file (up to 3MB)",
+          "request": {
+            "name": "Torii Upload file (up to 3MB)",
+            "description": {
+              "content": "Upload small files up to 3MB as multipart form data. Supported file types: .csv, .xls, .xlsx, .pdf, .doc, .docx, .png, .jpg, .jpeg, .xml, .json, .zip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) The file to upload (max 3MB)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a4d9dc8a-89c6-4103-96b8-405277aabdd9",
+              "name": "File uploaded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The file to upload (max 3MB).",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8f16395-bc04-4832-b2b2-1a5dff5d7e34",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The file to upload (max 3MB).",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34af25dd-01f8-41c8-9126-70341c286b9f",
+              "name": "File too large (exceeds 3MB limit).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The file to upload (max 3MB).",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0aea17f3-e023-4f74-a0f7-ee54818ff35b",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The file to upload (max 3MB).",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5af30639-6563-42d1-a8bc-635916927013",
+          "name": "Torii Get file upload URL",
+          "request": {
+            "name": "Torii Get file upload URL",
+            "description": {
+              "content": "Returns a secure, temporary S3 URL for uploading larger files directly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                "url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4a5cb41-2d9b-4c39-8be8-336838b2cc39",
+              "name": "A temporary upload URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"http://nbwqwTzqabPJkCQFuQMVa.xoelVRp-cRxdAT0XzTSqK6DTbPkNJ,JFBLy0WzdIhZPxH\",\n  \"fileId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf4a664a-a1ab-47d6-be28-c57f68beabb7",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12943660-7591-48a1-a9f2-866787c3c5ba",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ca9b67ba-53c8-45c9-b6cf-7c41e5fd0512",
+      "name": "Metadata",
+      "description": {
+        "content": "Retrieve field metadata for apps, users, and contracts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1041439-9833-4465-9eef-9248a780e144",
+          "name": "Torii List app fields metadata",
+          "request": {
+            "name": "Torii List app fields metadata",
+            "description": {
+              "content": "Lists app fields (predefined and custom), searchable by field name or key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search by field name or key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "645cc623-e5d3-4ba3-be01-4f6229c24fc5",
+              "name": "A list of app field metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isCustom\": false,\n      \"isRequired\": false\n    },\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isCustom\": false,\n      \"isRequired\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1e20ac3-691a-40c2-a345-45615503aa67",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a8f7291-38b6-41c3-907f-5659afaa6840",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d945164a-b131-480d-9023-00dd72426f78",
+          "name": "Torii List user fields metadata",
+          "request": {
+            "name": "Torii List user fields metadata",
+            "description": {
+              "content": "Lists user fields (predefined and custom), searchable by field name or key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search by field name or key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "138023a2-f6ab-465e-aa1c-662fb17e7ec5",
+              "name": "A list of user field metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isCustom\": false,\n      \"isRequired\": false\n    },\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isCustom\": false,\n      \"isRequired\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a19610f5-1e19-496d-b096-a0d24bbf4296",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "533c9590-5397-4cf4-a9ec-c9c941a9c42e",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cf02c9f-79bd-4157-98c5-9cb62153eb51",
+          "name": "Torii List contract fields metadata",
+          "request": {
+            "name": "Torii List contract fields metadata",
+            "description": {
+              "content": "Lists contract fields (predefined and custom), searchable by field name or key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contracts",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search by field name or key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c092609-2f2d-4379-bb1a-77ab62c77008",
+              "name": "A list of contract field metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isCustom\": false,\n      \"isRequired\": false\n    },\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isCustom\": false,\n      \"isRequired\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4bac392-f955-4ccc-8e1a-3e518a157229",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ea11b52-b32e-489e-a5a8-43ef30503b6c",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2cb769ce-0796-4544-996e-85f6c1c0979a",
+      "name": "Parsings",
+      "description": {
+        "content": "Manage file parsing and column mapping.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "332d6e3d-d5c0-42fe-8a2f-a09cfe2b8cd5",
+          "name": "Torii Get parse request",
+          "request": {
+            "name": "Torii Get parse request",
+            "description": {
+              "content": "Returns the status and details of a file parsing request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "parsings",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the parsing request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d8a7019-a668-46e3-b661-5f991e901d04",
+              "name": "Parsing request details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parsings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the parsing request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"fileId\": \"string\",\n  \"status\": \"string\",\n  \"columns\": [\n    \"string\",\n    \"string\"\n  ],\n  \"createdAt\": \"2010-11-29T03:56:28.299Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1045af4f-cf0e-48a3-8f19-215930086ce4",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parsings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the parsing request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19e12214-b14d-4235-9f76-681108bad426",
+              "name": "Parsing request not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parsings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the parsing request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f2672f0-1947-40ff-ba4b-ec7c7a3fc5c0",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parsings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the parsing request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a597798-acfa-4aca-b3bd-ea32c0067165",
+          "name": "Torii Map CSV columns",
+          "request": {
+            "name": "Torii Map CSV columns",
+            "description": {
+              "content": "Maps CSV columns to Torii fields for manual parsing of uploaded files.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "parsings",
+                "manual"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9653530f-a559-4ff9-96d2-2a0b1d7b0ef9",
+              "name": "Mapping applied successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parsings",
+                    "manual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c546df1-7f75-4b06-b54f-b38e61db6d2d",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parsings",
+                    "manual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db1ffe1a-a40d-4f5d-92eb-16b4a9c0a0c9",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parsings",
+                    "manual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "17c4c011-4992-4c46-96d7-e3c3e9a33b31",
+      "name": "SCIM",
+      "description": {
+        "content": "SCIM 2.0 user provisioning endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64da5034-e868-440f-ac91-7b315cb577b2",
+          "name": "Torii List SCIM users",
+          "request": {
+            "name": "Torii List SCIM users",
+            "description": {
+              "content": "List users via SCIM 2.0 protocol. Default results per page is 100, with a maximum of 200.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scim",
+                "v2",
+                "Users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startIndex",
+                  "value": "1",
+                  "description": "The 1-based index of the first result."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "100",
+                  "description": "Number of results per page (max 200)."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "SCIM filter expression (e.g. userName eq \"user@example.com\")."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a296864f-638a-4db2-ad76-7de16d744015",
+              "name": "A list of SCIM user resources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startIndex",
+                      "value": "1"
+                    },
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"string\",\n    \"string\"\n  ],\n  \"totalResults\": 2334,\n  \"startIndex\": 4789,\n  \"itemsPerPage\": 6058,\n  \"Resources\": [\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:User\"\n      ],\n      \"id\": \"string\",\n      \"userName\": \"string\",\n      \"name\": {\n        \"givenName\": \"string\",\n        \"familyName\": \"string\"\n      },\n      \"emails\": [\n        {\n          \"value\": \"zSN-HcuyiT0b@vZeQutNngysQTELbgmOFJfulGU.we\",\n          \"type\": \"string\",\n          \"primary\": true\n        },\n        {\n          \"value\": \"r9mYPf6@tNPr.nkmx\",\n          \"type\": \"string\",\n          \"primary\": false\n        }\n      ],\n      \"active\": false,\n      \"displayName\": \"string\",\n      \"externalId\": \"string\"\n    },\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:User\"\n      ],\n      \"id\": \"string\",\n      \"userName\": \"string\",\n      \"name\": {\n        \"givenName\": \"string\",\n        \"familyName\": \"string\"\n      },\n      \"emails\": [\n        {\n          \"value\": \"ZWdjKlXw@XjRFXAikOQDPi.ur\",\n          \"type\": \"string\",\n          \"primary\": true\n        },\n        {\n          \"value\": \"iHYSAg1@aRkPbTRtlWqMQec.rk\",\n          \"type\": \"string\",\n          \"primary\": true\n        }\n      ],\n      \"active\": true,\n      \"displayName\": \"string\",\n      \"externalId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3c7c12a-0089-4137-8042-a7475ac3025c",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startIndex",
+                      "value": "1"
+                    },
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b47f170-3170-44ea-8933-766637f6dfc8",
+          "name": "Torii Create SCIM user",
+          "request": {
+            "name": "Torii Create SCIM user",
+            "description": {
+              "content": "Creates a new user via SCIM 2.0 protocol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scim",
+                "v2",
+                "Users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "94260894-2bed-4c08-9692-7da32e0c94ba",
+              "name": "User created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"string\",\n  \"userName\": \"string\",\n  \"name\": {\n    \"givenName\": \"string\",\n    \"familyName\": \"string\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"LYKrgNCEncw@rWrIEwRpNsQYOvwCMNyzaY.ut\",\n      \"type\": \"string\",\n      \"primary\": false\n    },\n    {\n      \"value\": \"ot1Kev0vEy@zNkwRhbHhAzsBFhGGCo.wa\",\n      \"type\": \"string\",\n      \"primary\": true\n    }\n  ],\n  \"active\": true,\n  \"displayName\": \"string\",\n  \"externalId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0682a7f7-2952-4d0f-91ba-b2dad9f92368",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fa5fbcd-223d-419d-921f-e124f6505d9f",
+              "name": "User already exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e759922-5176-4bcd-8c6b-46516fd85c9c",
+          "name": "Torii Get SCIM user",
+          "request": {
+            "name": "Torii Get SCIM user",
+            "description": {
+              "content": "Returns a specific user by ID via SCIM 2.0 protocol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scim",
+                "v2",
+                "Users",
+                ":idUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idUser",
+                  "description": "(Required) The unique SCIM user identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e658da4-715d-4751-b8b3-b512490e60b4",
+              "name": "SCIM user resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"string\",\n  \"userName\": \"string\",\n  \"name\": {\n    \"givenName\": \"string\",\n    \"familyName\": \"string\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"LYKrgNCEncw@rWrIEwRpNsQYOvwCMNyzaY.ut\",\n      \"type\": \"string\",\n      \"primary\": false\n    },\n    {\n      \"value\": \"ot1Kev0vEy@zNkwRhbHhAzsBFhGGCo.wa\",\n      \"type\": \"string\",\n      \"primary\": true\n    }\n  ],\n  \"active\": true,\n  \"displayName\": \"string\",\n  \"externalId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4f633f1-ce43-4224-b30f-617ad02a529d",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f07aa386-a558-402e-83d3-608ba6ba5dd0",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee2e2e3f-3419-447e-8dda-bffbf1f45629",
+          "name": "Torii Patch SCIM user",
+          "request": {
+            "name": "Torii Patch SCIM user",
+            "description": {
+              "content": "Partially updates a user via SCIM 2.0 protocol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scim",
+                "v2",
+                "Users",
+                ":idUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idUser",
+                  "description": "(Required) The unique SCIM user identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    },\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b452e92-3da0-4429-a3ca-ee6d6a09559d",
+              "name": "User updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    },\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"string\",\n  \"userName\": \"string\",\n  \"name\": {\n    \"givenName\": \"string\",\n    \"familyName\": \"string\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"LYKrgNCEncw@rWrIEwRpNsQYOvwCMNyzaY.ut\",\n      \"type\": \"string\",\n      \"primary\": false\n    },\n    {\n      \"value\": \"ot1Kev0vEy@zNkwRhbHhAzsBFhGGCo.wa\",\n      \"type\": \"string\",\n      \"primary\": true\n    }\n  ],\n  \"active\": true,\n  \"displayName\": \"string\",\n  \"externalId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93472582-48d9-4a94-afb6-34f3adbdae00",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    },\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3eb470e1-d497-4d8d-9848-e1deab9153a2",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    },\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09d38e34-926f-46f2-a14e-ff5e4817a596",
+          "name": "Torii Delete SCIM user",
+          "request": {
+            "name": "Torii Delete SCIM user",
+            "description": {
+              "content": "Deletes a user via SCIM 2.0 protocol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scim",
+                "v2",
+                "Users",
+                ":idUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idUser",
+                  "description": "(Required) The unique SCIM user identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c8fe322-b096-458a-9bdb-c934cdae0113",
+              "name": "User deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0353abc-eea1-4ecf-8dab-e653b486c286",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3597d56-e0fe-4b66-8659-4c65bce078ed",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scim",
+                    "v2",
+                    "Users",
+                    ":idUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idUser",
+                      "description": "(Required) The unique SCIM user identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ce06cff3-b295-4a42-83fd-a6d3b8e1e8da",
+      "name": "Users",
+      "description": {
+        "content": "Manage users in your organization.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9e33d74-d2d0-4b66-80ea-03f9b6d95212",
+          "name": "Torii List users",
+          "request": {
+            "name": "Torii List users",
+            "description": {
+              "content": "Returns the list of users in your organization. Supports filtering via query parameters. Rate limit: 100 requests per minute.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of results per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Cursor for pagination to retrieve the next page of results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de544776-8e4d-49f7-a51e-a778682dae7d",
+              "name": "A list of users.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"email\": \"VB0a@TNUzoWJcIhbWIFj.ncrw\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"status\": \"string\",\n      \"department\": \"string\",\n      \"isExternal\": true,\n      \"appsCount\": 3638,\n      \"createdAt\": \"1966-10-29T12:42:05.746Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"email\": \"7XBRkoTh@rp.xtjg\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"status\": \"string\",\n      \"department\": \"string\",\n      \"isExternal\": true,\n      \"appsCount\": 7029,\n      \"createdAt\": \"2022-02-11T00:17:57.812Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aed64f38-c343-4068-81df-bc814f4442b1",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9c078d0-7644-41fb-8fa3-2f6ef3053c49",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "681d862c-8ef3-4d0a-b8e6-629795cfee53",
+      "name": "Torii Sync custom integration",
+      "request": {
+        "name": "Torii Sync custom integration",
+        "description": {
+          "content": "Triggers a sync of custom integration data, pushing user and license data into Torii.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "services",
+            "sync",
+            "custom"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+            "key": "X-API-Version",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "33544e4f-a62a-406f-87ce-fc273702d09c",
+          "name": "Sync triggered successfully.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "services",
+                "sync",
+                "custom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"status\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "f44df7ca-608a-403b-b5ba-890db1ffbfd9",
+          "name": "Authentication failed. Invalid or missing API key.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "services",
+                "sync",
+                "custom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "a4dd75ed-4298-44ab-9830-6a94888b3eca",
+          "name": "Rate limit exceeded. Too many requests.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "services",
+                "sync",
+                "custom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9357ac1c-61e6-4d22-b6e7-c07aa625df44",
+      "name": "Torii List workflow action executions",
+      "request": {
+        "name": "Torii List workflow action executions",
+        "description": {
+          "content": "Returns a list of workflow action executions.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "workflows",
+            "actionExecutions"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "sort",
+              "value": "<string>",
+              "description": "Field to sort results by."
+            },
+            {
+              "disabled": false,
+              "key": "size",
+              "value": "<integer>",
+              "description": "Number of results per page."
+            },
+            {
+              "disabled": false,
+              "key": "cursor",
+              "value": "<string>",
+              "description": "Cursor for pagination."
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+            "key": "X-API-Version",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "37b80d12-b332-469c-b2e6-d9037221abf3",
+          "name": "A list of workflow action executions.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "workflows",
+                "actionExecutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"workflowId\": \"string\",\n      \"actionType\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1992-11-05T02:50:52.557Z\",\n      \"completedAt\": \"1985-02-04T09:36:19.093Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"workflowId\": \"string\",\n      \"actionType\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1966-12-29T07:07:23.427Z\",\n      \"completedAt\": \"1970-06-15T13:41:10.621Z\"\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "35a08d95-4e2b-4df8-9304-63ae5db30d29",
+          "name": "Authentication failed. Invalid or missing API key.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "workflows",
+                "actionExecutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "f4905e41-f3fd-4410-b509-35075b4a4a36",
+          "name": "Rate limit exceeded. Too many requests.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "workflows",
+                "actionExecutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.toriihq.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99e606ec-dee1-4795-84d7-1dbab3dd9113",
+    "name": "Torii API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+      "type": "text/plain"
+    }
+  }
+}
