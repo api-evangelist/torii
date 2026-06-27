@@ -187,5 +187,5 @@ common:
       - name: PagerDuty
       - name: Confluence
       - name: Notion
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.toriihq.com/llms.txt
