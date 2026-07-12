@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/torii-torii-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'API key authentication. Generate an API key from Settings > API Access in Torii.
+    Use the Authorization header: Bearer {API_KEY}.'
+  sources:
+  - openapi/torii-torii-openapi.yml

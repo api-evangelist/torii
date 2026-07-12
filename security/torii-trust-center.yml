@@ -1,0 +1,12 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://trust.toriihq.com/?token=
+url: https://trust.toriihq.com/?token=
+certifications:
+- SOC 2
+evidence:
+- source: https://trust.toriihq.com/?token=
+  keywords:
+  - soc 2
+  - trust center
