@@ -1,0 +1,252 @@
+openapi: 3.1.0
+info:
+  title: Torii Apps SCIM API
+  description: The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.
+  version: 1.1.0
+  contact:
+    name: Torii
+    url: https://developers.toriihq.com
+  termsOfService: https://www.toriihq.com/terms
+servers:
+- url: https://api.toriihq.com/v1.0
+  description: Torii API v1.0
+- url: https://api.toriihq.com/v1.1
+  description: Torii API v1.1
+security:
+- bearerAuth: []
+tags:
+- name: SCIM
+  description: SCIM 2.0 user provisioning endpoints.
+paths:
+  /scim/v2/Users:
+    get:
+      operationId: listScimUsers
+      summary: Torii List SCIM users
+      description: List users via SCIM 2.0 protocol. Default results per page is 100, with a maximum of 200.
+      tags:
+      - SCIM
+      parameters:
+      - name: startIndex
+        in: query
+        description: The 1-based index of the first result.
+        schema:
+          type: integer
+          default: 1
+      - name: count
+        in: query
+        description: Number of results per page (max 200).
+        schema:
+          type: integer
+          default: 100
+          maximum: 200
+      - name: filter
+        in: query
+        description: SCIM filter expression (e.g. userName eq "user@example.com").
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of SCIM user resources.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    items:
+                      type: string
+                  totalResults:
+                    type: integer
+                  startIndex:
+                    type: integer
+                  itemsPerPage:
+                    type: integer
+                  Resources:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createScimUser
+      summary: Torii Create SCIM user
+      description: Creates a new user via SCIM 2.0 protocol.
+      tags:
+      - SCIM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScimUser'
+      responses:
+        '201':
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: User already exists.
+  /scim/v2/Users/{idUser}:
+    get:
+      operationId: getScimUser
+      summary: Torii Get SCIM user
+      description: Returns a specific user by ID via SCIM 2.0 protocol.
+      tags:
+      - SCIM
+      parameters:
+      - name: idUser
+        in: path
+        required: true
+        description: The unique SCIM user identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SCIM user resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: User not found.
+    patch:
+      operationId: patchScimUser
+      summary: Torii Patch SCIM user
+      description: Partially updates a user via SCIM 2.0 protocol.
+      tags:
+      - SCIM
+      parameters:
+      - name: idUser
+        in: path
+        required: true
+        description: The unique SCIM user identifier.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                schemas:
+                  type: array
+                  items:
+                    type: string
+                Operations:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      op:
+                        type: string
+                        enum:
+                        - replace
+                        - add
+                        - remove
+                      path:
+                        type: string
+                      value:
+                        description: The value to set.
+      responses:
+        '200':
+          description: User updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScimUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: User not found.
+    delete:
+      operationId: deleteScimUser
+      summary: Torii Delete SCIM user
+      description: Deletes a user via SCIM 2.0 protocol.
+      tags:
+      - SCIM
+      parameters:
+      - name: idUser
+        in: path
+        required: true
+        description: The unique SCIM user identifier.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: User not found.
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  schemas:
+    ScimUser:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+          example:
+          - urn:ietf:params:scim:schemas:core:2.0:User
+        id:
+          type: string
+          description: Unique SCIM identifier.
+        userName:
+          type: string
+          description: Username, typically the email address.
+        name:
+          type: object
+          properties:
+            givenName:
+              type: string
+              description: First name.
+            familyName:
+              type: string
+              description: Last name.
+        emails:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                format: email
+              type:
+                type: string
+              primary:
+                type: boolean
+        active:
+          type: boolean
+          description: Whether the user is active.
+        displayName:
+          type: string
+          description: Display name.
+        externalId:
+          type: string
+          description: External identifier from the identity provider.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key authentication. Generate an API key from Settings > API Access in Torii. Use the Authorization header: Bearer {API_KEY}.'

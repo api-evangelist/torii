@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: Torii Apps Services API
+  description: The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.
+  version: 1.1.0
+  contact:
+    name: Torii
+    url: https://developers.toriihq.com
+  termsOfService: https://www.toriihq.com/terms
+servers:
+- url: https://api.toriihq.com/v1.0
+  description: Torii API v1.0
+- url: https://api.toriihq.com/v1.1
+  description: Torii API v1.1
+security:
+- bearerAuth: []
+tags:
+- name: Services
+paths:
+  /services/sync/custom:
+    post:
+      operationId: syncCustomIntegration
+      summary: Torii Sync custom integration
+      description: Triggers a sync of custom integration data, pushing user and license data into Torii.
+      tags:
+      - Services
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appName:
+                  type: string
+                  description: The name of the application to sync.
+                users:
+                  type: array
+                  description: List of users and their license information.
+                  items:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        format: email
+                        description: User email address.
+                      status:
+                        type: string
+                        description: User status in the application.
+                      role:
+                        type: string
+                        description: User role in the application.
+                      lastUsedDate:
+                        type: string
+                        format: date-time
+                        description: Last time the user accessed the application.
+                licenses:
+                  type: array
+                  description: License information for the application.
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: License type name.
+                      total:
+                        type: integer
+                        description: Total number of licenses.
+                      used:
+                        type: integer
+                        description: Number of licenses in use.
+                      pricePerUser:
+                        type: number
+                        description: Cost per user for this license type.
+              required:
+              - appName
+      responses:
+        '200':
+          description: Sync triggered successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Status of the sync operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. Too many requests.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
+      schema:
+        type: string
+        enum:
+        - '1.0'
+        - '1.1'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key authentication. Generate an API key from Settings > API Access in Torii. Use the Authorization header: Bearer {API_KEY}.'

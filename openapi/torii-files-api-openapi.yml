@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Torii Apps Files API
+  description: The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.
+  version: 1.1.0
+  contact:
+    name: Torii
+    url: https://developers.toriihq.com
+  termsOfService: https://www.toriihq.com/terms
+servers:
+- url: https://api.toriihq.com/v1.0
+  description: Torii API v1.0
+- url: https://api.toriihq.com/v1.1
+  description: Torii API v1.1
+security:
+- bearerAuth: []
+tags:
+- name: Files
+  description: Upload and manage files.
+paths:
+  /files/upload:
+    post:
+      operationId: uploadFile
+      summary: Torii Upload file (up to 3MB)
+      description: 'Upload small files up to 3MB as multipart form data. Supported file types: .csv, .xls, .xlsx, .pdf, .doc, .docx, .png, .jpg, .jpeg, .xml, .json, .zip.'
+      tags:
+      - Files
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The file to upload (max 3MB).
+              required:
+              - file
+      responses:
+        '200':
+          description: File uploaded successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the uploaded file.
+                  url:
+                    type: string
+                    description: URL of the uploaded file.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '413':
+          description: File too large (exceeds 3MB limit).
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /files/url:
+    get:
+      operationId: getFileUploadUrl
+      summary: Torii Get file upload URL
+      description: Returns a secure, temporary S3 URL for uploading larger files directly.
+      tags:
+      - Files
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A temporary upload URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: uri
+                    description: Temporary S3 upload URL.
+                  fileId:
+                    type: string
+                    description: The file identifier to use after upload.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. Too many requests.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
+      schema:
+        type: string
+        enum:
+        - '1.0'
+        - '1.1'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key authentication. Generate an API key from Settings > API Access in Torii. Use the Authorization header: Bearer {API_KEY}.'

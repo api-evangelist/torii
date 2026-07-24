@@ -1,0 +1,160 @@
+openapi: 3.1.0
+info:
+  title: Torii Apps Parsings API
+  description: The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.
+  version: 1.1.0
+  contact:
+    name: Torii
+    url: https://developers.toriihq.com
+  termsOfService: https://www.toriihq.com/terms
+servers:
+- url: https://api.toriihq.com/v1.0
+  description: Torii API v1.0
+- url: https://api.toriihq.com/v1.1
+  description: Torii API v1.1
+security:
+- bearerAuth: []
+tags:
+- name: Parsings
+  description: Manage file parsing and column mapping.
+paths:
+  /parsings/{id}:
+    get:
+      operationId: getParsingRequest
+      summary: Torii Get parse request
+      description: Returns the status and details of a file parsing request.
+      tags:
+      - Parsings
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the parsing request.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: Parsing request details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParsingRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Parsing request not found.
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /parsings/manual:
+    put:
+      operationId: updateParsingManual
+      summary: Torii Map CSV columns
+      description: Maps CSV columns to Torii fields for manual parsing of uploaded files.
+      tags:
+      - Parsings
+      parameters:
+      - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileId:
+                  type: string
+                  description: The file ID returned from upload.
+                mappings:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      sourceColumn:
+                        type: string
+                        description: Column name from the uploaded CSV.
+                      targetField:
+                        type: string
+                        description: Torii field to map to.
+              required:
+              - fileId
+              - mappings
+      responses:
+        '200':
+          description: Mapping applied successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The parsing request ID.
+                  status:
+                    type: string
+                    description: Status of the parsing request.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. Too many requests.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
+      schema:
+        type: string
+        enum:
+        - '1.0'
+        - '1.1'
+  schemas:
+    ParsingRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the parsing request.
+        fileId:
+          type: string
+          description: Associated file ID.
+        status:
+          type: string
+          description: Current status of the parsing request.
+        columns:
+          type: array
+          items:
+            type: string
+          description: Detected columns from the file.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the parsing request was created.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key authentication. Generate an API key from Settings > API Access in Torii. Use the Authorization header: Bearer {API_KEY}.'

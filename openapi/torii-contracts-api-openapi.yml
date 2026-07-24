@@ -1,0 +1,194 @@
+openapi: 3.1.0
+info:
+  title: Torii Apps Contracts API
+  description: The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.
+  version: 1.1.0
+  contact:
+    name: Torii
+    url: https://developers.toriihq.com
+  termsOfService: https://www.toriihq.com/terms
+servers:
+- url: https://api.toriihq.com/v1.0
+  description: Torii API v1.0
+- url: https://api.toriihq.com/v1.1
+  description: Torii API v1.1
+security:
+- bearerAuth: []
+tags:
+- name: Contracts
+  description: Manage SaaS contracts and renewal information.
+paths:
+  /contracts/{idContract}:
+    get:
+      operationId: getContract
+      summary: Torii Get contract
+      description: Returns details of a specific contract by ID.
+      tags:
+      - Contracts
+      parameters:
+      - name: idContract
+        in: path
+        required: true
+        description: The unique identifier of the contract.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: Contract details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Contract not found.
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    put:
+      operationId: updateContract
+      summary: Torii Update contract
+      description: Updates an existing contract.
+      tags:
+      - Contracts
+      parameters:
+      - name: idContract
+        in: path
+        required: true
+        description: The unique identifier of the contract.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractUpdate'
+      responses:
+        '200':
+          description: Contract updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Contract not found.
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. Too many requests.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  schemas:
+    ContractUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Contract name.
+        status:
+          type: string
+          description: Contract status.
+        startDate:
+          type: string
+          format: date
+          description: Contract start date.
+        endDate:
+          type: string
+          format: date
+          description: Contract end date.
+        renewalDate:
+          type: string
+          format: date
+          description: Contract renewal date.
+        annualCost:
+          type: number
+          description: Annual cost.
+        currency:
+          type: string
+          description: Currency code.
+        owner:
+          type: string
+          description: Contract owner.
+    Contract:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the contract.
+        appId:
+          type: string
+          description: Associated application ID.
+        appName:
+          type: string
+          description: Associated application name.
+        name:
+          type: string
+          description: Contract name.
+        status:
+          type: string
+          description: Contract status.
+        startDate:
+          type: string
+          format: date
+          description: Contract start date.
+        endDate:
+          type: string
+          format: date
+          description: Contract end date.
+        renewalDate:
+          type: string
+          format: date
+          description: Contract renewal date.
+        annualCost:
+          type: number
+          description: Annual cost.
+        currency:
+          type: string
+          description: Currency code.
+        owner:
+          type: string
+          description: Contract owner.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the contract was created.
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
+      schema:
+        type: string
+        enum:
+        - '1.0'
+        - '1.1'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key authentication. Generate an API key from Settings > API Access in Torii. Use the Authorization header: Bearer {API_KEY}.'

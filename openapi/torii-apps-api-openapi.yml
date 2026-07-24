@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: Torii Apps API
+  description: The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.
+  version: 1.1.0
+  contact:
+    name: Torii
+    url: https://developers.toriihq.com
+  termsOfService: https://www.toriihq.com/terms
+servers:
+- url: https://api.toriihq.com/v1.0
+  description: Torii API v1.0
+- url: https://api.toriihq.com/v1.1
+  description: Torii API v1.1
+security:
+- bearerAuth: []
+tags:
+- name: Apps
+  description: Manage applications discovered and tracked in your organization.
+paths:
+  /apps:
+    get:
+      operationId: getApps
+      summary: Torii List apps
+      description: Returns a list of apps used in the organization. Supports filtering via query parameters including custom application fields.
+      tags:
+      - Apps
+      parameters:
+      - name: fields
+        in: query
+        description: Comma-separated list of fields to include in the response (e.g. id,name,category).
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Filter apps by state (e.g. discovered, managed, closed).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Field to sort results by.
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: Number of results per page.
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: Cursor for pagination to retrieve the next page of results.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: A list of apps.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/App'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. Too many requests.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
+      schema:
+        type: string
+        enum:
+        - '1.0'
+        - '1.1'
+  schemas:
+    App:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the app.
+        name:
+          type: string
+          description: Name of the application.
+        category:
+          type: string
+          description: Application category.
+        state:
+          type: string
+          description: Current state (e.g. discovered, managed, closed).
+        url:
+          type: string
+          format: uri
+          description: Application URL.
+        activeUsers:
+          type: integer
+          description: Number of active users.
+        totalUsers:
+          type: integer
+          description: Total number of users.
+        totalLicenses:
+          type: integer
+          description: Total number of licenses.
+        annualCost:
+          type: number
+          description: Annual cost of the application.
+        owner:
+          type: string
+          description: Application owner.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the app was first discovered.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key authentication. Generate an API key from Settings > API Access in Torii. Use the Authorization header: Bearer {API_KEY}.'
