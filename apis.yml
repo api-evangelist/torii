@@ -1,50 +1,316 @@
 aid: torii
 url: https://raw.githubusercontent.com/api-evangelist/torii/refs/heads/main/apis.yml
 apis:
-  - aid: torii:torii
-    name: Torii SaaS Management API
-    tags:
-      - Apps
-      - Audit
-      - Contracts
-      - Files
-      - Metadata
-      - Parsings
-      - SaaS Management
-      - SCIM
-      - Users
-    humanURL: https://developers.toriihq.com/reference/introduction-1
-    properties:
-      - url: https://developers.toriihq.com/reference/introduction-1
-        type: Documentation
-      - url: https://www.toriihq.com/
-        type: Website
-      - url: openapi/torii-torii-openapi.yml
-        type: OpenAPI
-      - url: rules/torii-rules.yml
-        type: SpectralRules
-      - url: json-schema/app.json
-        type: JSONSchema
-      - url: json-schema/user.json
-        type: JSONSchema
-      - url: json-schema/contract.json
-        type: JSONSchema
-      - url: json-schema/audit-log-entry.json
-        type: JSONSchema
-      - url: json-schema/field-metadata.json
-        type: JSONSchema
-      - url: json-schema/parsing-request.json
-        type: JSONSchema
-      - url: json-schema/scim-user.json
-        type: JSONSchema
-      - url: json-ld/torii-context.jsonld
-        type: JSONLD
-    description: >-
-      The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows IT, Finance, and
-      Security teams to manage apps, users, contracts, licenses, audit logs, and file uploads. Supports custom
-      integration data sync, workflow execution monitoring, and SCIM 2.0 user provisioning. The API closely follows REST
-      semantics, uses JSON to encode objects, cursor-based pagination, and relies on standard HTTP codes to signal
-      operation outcomes. Authentication uses Bearer API keys generated in Torii Settings.
+- aid: torii:torii-apps-api
+  name: Torii Apps API
+  description: Manage applications discovered and tracked in your organization.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-apps-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-audit-api
+  name: Torii Audit API
+  description: Retrieve admin audit log entries.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Audit
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-audit-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-contracts-api
+  name: Torii Contracts API
+  description: Manage SaaS contracts and renewal information.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-files-api
+  name: Torii Files API
+  description: Upload and manage files.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-files-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-metadata-api
+  name: Torii Metadata API
+  description: Retrieve field metadata for apps, users, and contracts.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-parsings-api
+  name: Torii Parsings API
+  description: Manage file parsing and column mapping.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Parsings
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-parsings-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-scim-api
+  name: Torii SCIM API
+  description: SCIM 2.0 user provisioning endpoints.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - SCIM
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-scim-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-services-api
+  name: Torii Services API
+  description: The Services API from Torii — 1 operation(s) for services.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-services-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-users-api
+  name: Torii Users API
+  description: Manage users in your organization.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
+- aid: torii:torii-workflows-api
+  name: Torii Workflows API
+  description: The Workflows API from Torii — 1 operation(s) for workflows.
+  humanURL: https://developers.toriihq.com/reference/introduction-1
+  tags:
+  - Workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/torii-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://developers.toriihq.com/reference/introduction-1
+  - type: Website
+    url: https://www.toriihq.com/
+  - type: SpectralRules
+    url: rules/torii-rules.yml
+  - type: JSONSchema
+    url: json-schema/app.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/contract.json
+  - type: JSONSchema
+    url: json-schema/audit-log-entry.json
+  - type: JSONSchema
+    url: json-schema/field-metadata.json
+  - type: JSONSchema
+    url: json-schema/parsing-request.json
+  - type: JSONSchema
+    url: json-schema/scim-user.json
+  - type: JSONLD
+    url: json-ld/torii-context.jsonld
 name: Torii
 tags:
   - Apps
@@ -54,7 +320,20 @@ tags:
   - IT Management
   - SaaS Management
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/torii.png
 access: 3rd-Party
 created: '2025-07-15'
 modified: '2026-05-19'
@@ -87,6 +366,8 @@ maintainers:
     email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/torii/overview
   - type: AgenticAccess
     url: agentic-access/torii-agentic-access.yml
   - type: TrustCenter
