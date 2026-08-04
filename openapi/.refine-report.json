@@ -1,0 +1,32 @@
+{
+  "provider": "torii",
+  "sources": [
+    "torii-apps-api-openapi.yml",
+    "torii-audit-api-openapi.yml",
+    "torii-contracts-api-openapi.yml",
+    "torii-files-api-openapi.yml",
+    "torii-metadata-api-openapi.yml",
+    "torii-parsings-api-openapi.yml",
+    "torii-scim-api-openapi.yml",
+    "torii-services-api-openapi.yml",
+    "torii-users-api-openapi.yml",
+    "torii-workflows-api-openapi.yml"
+  ],
+  "outputs": [
+    "torii-apps-api-openapi.yml",
+    "torii-audit-api-openapi.yml",
+    "torii-contracts-api-openapi.yml",
+    "torii-files-api-openapi.yml",
+    "torii-metadata-api-openapi.yml",
+    "torii-parsings-api-openapi.yml",
+    "torii-scim-api-openapi.yml",
+    "torii-services-api-openapi.yml",
+    "torii-users-api-openapi.yml",
+    "torii-workflows-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,542 @@
+{
+  "info": {
+    "_postman_id": "e4924df4-b8a1-4799-bded-94e6a4ea8d51",
+    "name": "Torii Apps Parsings API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:12.000Z",
+    "updatedAt": "2026-07-28T03:17:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e4924df4-b8a1-4799-bded-94e6a4ea8d51"
+  },
+  "item": [
+    {
+      "name": "parsings",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Torii Get parse request",
+              "id": "3814614c-6d01-405e-946e-f17142832779",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/parsings/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "parsings",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "001cc148-6156-4845-8bb1-99e8a6022bf6",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the parsing request."
+                    }
+                  ]
+                },
+                "description": "Returns the status and details of a file parsing request."
+              },
+              "response": [
+                {
+                  "id": "a96cfc87-7b2f-4dce-ac17-4857b75f8197",
+                  "name": "Parsing request details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/parsings/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "parsings",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"fileId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"columns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"createdAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:17:12.000Z",
+                  "updatedAt": "2026-07-28T03:17:12.000Z",
+                  "uid": "35240-a96cfc87-7b2f-4dce-ac17-4857b75f8197"
+                },
+                {
+                  "id": "89974cba-b927-46d3-b60f-2bab1f93af27",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/parsings/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "parsings",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:12.000Z",
+                  "updatedAt": "2026-07-28T03:17:12.000Z",
+                  "uid": "35240-89974cba-b927-46d3-b60f-2bab1f93af27"
+                },
+                {
+                  "id": "0a7fe8ec-6d63-47fd-b9dd-f38146b84eed",
+                  "name": "Parsing request not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/parsings/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "parsings",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:12.000Z",
+                  "updatedAt": "2026-07-28T03:17:12.000Z",
+                  "uid": "35240-0a7fe8ec-6d63-47fd-b9dd-f38146b84eed"
+                },
+                {
+                  "id": "713d5caa-96ea-4e3b-8ff0-fb36ce7a2620",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/parsings/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "parsings",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:12.000Z",
+                  "updatedAt": "2026-07-28T03:17:12.000Z",
+                  "uid": "35240-713d5caa-96ea-4e3b-8ff0-fb36ce7a2620"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:12.000Z",
+              "updatedAt": "2026-07-28T03:17:12.000Z",
+              "uid": "35240-3814614c-6d01-405e-946e-f17142832779"
+            }
+          ],
+          "id": "b06cf6d6-3107-4867-9fde-7c38811039e3",
+          "createdAt": "2026-07-28T03:17:12.000Z",
+          "updatedAt": "2026-07-28T03:17:12.000Z",
+          "uid": "35240-b06cf6d6-3107-4867-9fde-7c38811039e3"
+        },
+        {
+          "name": "manual",
+          "item": [
+            {
+              "name": "Torii Map CSV columns",
+              "id": "c9310674-8597-4883-a59d-b288b4d3c03d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/parsings/manual",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "parsings",
+                    "manual"
+                  ]
+                },
+                "description": "Maps CSV columns to Torii fields for manual parsing of uploaded files."
+              },
+              "response": [
+                {
+                  "id": "c95576c6-5ec6-4159-afa1-95a395e08bf7",
+                  "name": "Mapping applied successfully.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/parsings/manual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "parsings",
+                        "manual"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:12.000Z",
+                  "updatedAt": "2026-07-28T03:17:12.000Z",
+                  "uid": "35240-c95576c6-5ec6-4159-afa1-95a395e08bf7"
+                },
+                {
+                  "id": "01f4271d-82ef-440a-9103-19de65cc3646",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/parsings/manual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "parsings",
+                        "manual"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:12.000Z",
+                  "updatedAt": "2026-07-28T03:17:12.000Z",
+                  "uid": "35240-01f4271d-82ef-440a-9103-19de65cc3646"
+                },
+                {
+                  "id": "9a1127ec-04f6-4e7c-8218-b088a4f31f83",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fileId\": \"<string>\",\n  \"mappings\": [\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    },\n    {\n      \"sourceColumn\": \"<string>\",\n      \"targetField\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/parsings/manual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "parsings",
+                        "manual"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:12.000Z",
+                  "updatedAt": "2026-07-28T03:17:12.000Z",
+                  "uid": "35240-9a1127ec-04f6-4e7c-8218-b088a4f31f83"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:12.000Z",
+              "updatedAt": "2026-07-28T03:17:12.000Z",
+              "uid": "35240-c9310674-8597-4883-a59d-b288b4d3c03d"
+            }
+          ],
+          "id": "518ca4f2-25e5-43a7-b004-074eab834bf5",
+          "createdAt": "2026-07-28T03:17:12.000Z",
+          "updatedAt": "2026-07-28T03:17:12.000Z",
+          "uid": "35240-518ca4f2-25e5-43a7-b004-074eab834bf5"
+        }
+      ],
+      "id": "854c88f3-d8e8-47c0-8222-8e9f0d18317e",
+      "createdAt": "2026-07-28T03:17:12.000Z",
+      "updatedAt": "2026-07-28T03:17:12.000Z",
+      "uid": "35240-854c88f3-d8e8-47c0-8222-8e9f0d18317e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

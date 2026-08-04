@@ -1,0 +1,304 @@
+{
+  "info": {
+    "_postman_id": "0b800199-551b-4624-af63-b0be9208b38a",
+    "name": "Torii Apps Users API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:19.000Z",
+    "updatedAt": "2026-07-28T03:17:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0b800199-551b-4624-af63-b0be9208b38a"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Torii List users",
+          "id": "712131b1-9107-4516-a653-9176c4217aed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?fields=<string>&sort=<string>&size=<integer>&cursor=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Field to sort results by.",
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results per page.",
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Cursor for pagination to retrieve the next page of results.",
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the list of users in your organization. Supports filtering via query parameters. Rate limit: 100 requests per minute."
+          },
+          "response": [
+            {
+              "id": "93937f93-01ae-402d-99da-f538b48bcc62",
+              "name": "A list of users.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?fields=<string>&sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"status\": \"<string>\",\n      \"department\": \"<string>\",\n      \"isExternal\": \"<boolean>\",\n      \"appsCount\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"status\": \"<string>\",\n      \"department\": \"<string>\",\n      \"isExternal\": \"<boolean>\",\n      \"appsCount\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:17:19.000Z",
+              "updatedAt": "2026-07-28T03:17:19.000Z",
+              "uid": "35240-93937f93-01ae-402d-99da-f538b48bcc62"
+            },
+            {
+              "id": "2f1578c6-45fd-42ba-be32-e8c886fdfc06",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?fields=<string>&sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:19.000Z",
+              "updatedAt": "2026-07-28T03:17:19.000Z",
+              "uid": "35240-2f1578c6-45fd-42ba-be32-e8c886fdfc06"
+            },
+            {
+              "id": "f9ebb4af-80b3-4f1f-b784-3d85aed8c89a",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?fields=<string>&sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:19.000Z",
+              "updatedAt": "2026-07-28T03:17:19.000Z",
+              "uid": "35240-f9ebb4af-80b3-4f1f-b784-3d85aed8c89a"
+            }
+          ],
+          "createdAt": "2026-07-28T03:17:19.000Z",
+          "updatedAt": "2026-07-28T03:17:19.000Z",
+          "uid": "35240-712131b1-9107-4516-a653-9176c4217aed"
+        }
+      ],
+      "id": "b94d8ff6-ea33-42cd-a3a0-7a578f56c83d",
+      "createdAt": "2026-07-28T03:17:19.000Z",
+      "updatedAt": "2026-07-28T03:17:19.000Z",
+      "uid": "35240-b94d8ff6-ea33-42cd-a3a0-7a578f56c83d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

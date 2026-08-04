@@ -1,0 +1,324 @@
+{
+  "info": {
+    "_postman_id": "c1852ac7-af39-4f35-b6fe-17c2160638f1",
+    "name": "Torii Apps API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:06.000Z",
+    "updatedAt": "2026-07-28T03:17:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c1852ac7-af39-4f35-b6fe-17c2160638f1"
+  },
+  "item": [
+    {
+      "name": "apps",
+      "item": [
+        {
+          "name": "Torii List apps",
+          "id": "fbc3a0ad-d60e-4bba-8869-9f7f645cd173",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/apps?fields=<string>&state=<string>&sort=<string>&size=<integer>&cursor=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apps"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of fields to include in the response (e.g. id,name,category).",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter apps by state (e.g. discovered, managed, closed).",
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Field to sort results by.",
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results per page.",
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Cursor for pagination to retrieve the next page of results.",
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of apps used in the organization. Supports filtering via query parameters including custom application fields."
+          },
+          "response": [
+            {
+              "id": "1400df0f-bad3-46f8-907f-12ed36fdd081",
+              "name": "A list of apps.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apps?fields=<string>&state=<string>&sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to include in the response (e.g. id,name,category).",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter apps by state (e.g. discovered, managed, closed).",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"state\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"activeUsers\": \"<integer>\",\n      \"totalUsers\": \"<integer>\",\n      \"totalLicenses\": \"<integer>\",\n      \"annualCost\": \"<number>\",\n      \"owner\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"state\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"activeUsers\": \"<integer>\",\n      \"totalUsers\": \"<integer>\",\n      \"totalLicenses\": \"<integer>\",\n      \"annualCost\": \"<number>\",\n      \"owner\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:17:07.000Z",
+              "updatedAt": "2026-07-28T03:17:07.000Z",
+              "uid": "35240-1400df0f-bad3-46f8-907f-12ed36fdd081"
+            },
+            {
+              "id": "84cb9dd9-0a24-4fa9-bb37-73e1ed3c10fc",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apps?fields=<string>&state=<string>&sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to include in the response (e.g. id,name,category).",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter apps by state (e.g. discovered, managed, closed).",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:07.000Z",
+              "updatedAt": "2026-07-28T03:17:07.000Z",
+              "uid": "35240-84cb9dd9-0a24-4fa9-bb37-73e1ed3c10fc"
+            },
+            {
+              "id": "7833d613-67f9-4fa4-8d20-21988141a65d",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apps?fields=<string>&state=<string>&sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to include in the response (e.g. id,name,category).",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter apps by state (e.g. discovered, managed, closed).",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:07.000Z",
+              "updatedAt": "2026-07-28T03:17:07.000Z",
+              "uid": "35240-7833d613-67f9-4fa4-8d20-21988141a65d"
+            }
+          ],
+          "createdAt": "2026-07-28T03:17:07.000Z",
+          "updatedAt": "2026-07-28T03:17:07.000Z",
+          "uid": "35240-fbc3a0ad-d60e-4bba-8869-9f7f645cd173"
+        }
+      ],
+      "id": "d906b693-6988-4a61-b845-c5c163924bcf",
+      "createdAt": "2026-07-28T03:17:06.000Z",
+      "updatedAt": "2026-07-28T03:17:06.000Z",
+      "uid": "35240-d906b693-6988-4a61-b845-c5c163924bcf"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

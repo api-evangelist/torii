@@ -1,0 +1,614 @@
+{
+  "info": {
+    "_postman_id": "17c6593e-67e8-4717-9fa7-21f72c6234e3",
+    "name": "Torii Apps Contracts API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:08.000Z",
+    "updatedAt": "2026-07-28T03:17:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-17c6593e-67e8-4717-9fa7-21f72c6234e3"
+  },
+  "item": [
+    {
+      "name": "contracts",
+      "item": [
+        {
+          "name": "{idContract}",
+          "item": [
+            {
+              "name": "Torii Get contract",
+              "id": "7f803325-3de0-4143-af21-7b4d95f19997",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contracts/:idContract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1c40b2c9-b602-4a68-a890-6793eefcac01",
+                      "key": "idContract",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "description": "Returns details of a specific contract by ID."
+              },
+              "response": [
+                {
+                  "id": "78c9f213-3110-4478-927e-6d4423cfaa27",
+                  "name": "Contract details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"appName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-78c9f213-3110-4478-927e-6d4423cfaa27"
+                },
+                {
+                  "id": "33d03c3d-9b54-4dda-9f56-173271009496",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-33d03c3d-9b54-4dda-9f56-173271009496"
+                },
+                {
+                  "id": "83278a14-aa9d-4473-a471-6db0d08ca873",
+                  "name": "Contract not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-83278a14-aa9d-4473-a471-6db0d08ca873"
+                },
+                {
+                  "id": "033e7556-4aa9-4b8e-aa51-f8a08d623a57",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-033e7556-4aa9-4b8e-aa51-f8a08d623a57"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:09.000Z",
+              "updatedAt": "2026-07-28T03:17:09.000Z",
+              "uid": "35240-7f803325-3de0-4143-af21-7b4d95f19997"
+            },
+            {
+              "name": "Torii Update contract",
+              "id": "f35f855a-3e13-470d-9165-2299cfb33cba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contracts/:idContract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts",
+                    ":idContract"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b7b51c09-c3e4-4611-944b-878a2d6a8741",
+                      "key": "idContract",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the contract."
+                    }
+                  ]
+                },
+                "description": "Updates an existing contract."
+              },
+              "response": [
+                {
+                  "id": "ae22d909-48a2-42de-96ea-f0c3ccc94cb3",
+                  "name": "Contract updated successfully.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"appName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-ae22d909-48a2-42de-96ea-f0c3ccc94cb3"
+                },
+                {
+                  "id": "3bbafcc1-05ec-4a81-9d13-af24ed632cc7",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-3bbafcc1-05ec-4a81-9d13-af24ed632cc7"
+                },
+                {
+                  "id": "bf3cb282-7870-4d9e-af53-f01aee1fcf11",
+                  "name": "Contract not found.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-bf3cb282-7870-4d9e-af53-f01aee1fcf11"
+                },
+                {
+                  "id": "80c310e8-cc41-460d-be57-41a86a27fbc1",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"owner\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:idContract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":idContract"
+                      ],
+                      "variable": [
+                        {
+                          "key": "idContract"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:09.000Z",
+                  "updatedAt": "2026-07-28T03:17:09.000Z",
+                  "uid": "35240-80c310e8-cc41-460d-be57-41a86a27fbc1"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:09.000Z",
+              "updatedAt": "2026-07-28T03:17:09.000Z",
+              "uid": "35240-f35f855a-3e13-470d-9165-2299cfb33cba"
+            }
+          ],
+          "id": "82dce57b-324a-44ab-8448-da8cb2ca000a",
+          "createdAt": "2026-07-28T03:17:09.000Z",
+          "updatedAt": "2026-07-28T03:17:09.000Z",
+          "uid": "35240-82dce57b-324a-44ab-8448-da8cb2ca000a"
+        }
+      ],
+      "id": "365f5568-9beb-494b-a0a9-224986114ddf",
+      "createdAt": "2026-07-28T03:17:09.000Z",
+      "updatedAt": "2026-07-28T03:17:09.000Z",
+      "uid": "35240-365f5568-9beb-494b-a0a9-224986114ddf"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

@@ -1,0 +1,529 @@
+{
+  "info": {
+    "_postman_id": "7c3a0a46-3156-4997-9f24-094296cc4636",
+    "name": "Torii Apps Files API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:09.000Z",
+    "updatedAt": "2026-07-28T03:17:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7c3a0a46-3156-4997-9f24-094296cc4636"
+  },
+  "item": [
+    {
+      "name": "files",
+      "item": [
+        {
+          "name": "upload",
+          "item": [
+            {
+              "name": "Torii Upload file (up to 3MB)",
+              "id": "4676b4d8-3ed5-4568-b9ee-10d1ea8bbc3a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) The file to upload (max 3MB).",
+                      "key": "file",
+                      "type": "file",
+                      "value": null
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/files/upload",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "files",
+                    "upload"
+                  ]
+                },
+                "description": "Upload small files up to 3MB as multipart form data. Supported file types: .csv, .xls, .xlsx, .pdf, .doc, .docx, .png, .jpg, .jpeg, .xml, .json, .zip."
+              },
+              "response": [
+                {
+                  "id": "462d3458-8452-4f00-a496-18fb53ddd77c",
+                  "name": "File uploaded successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The file to upload (max 3MB).",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/files/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "files",
+                        "upload"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:10.000Z",
+                  "updatedAt": "2026-07-28T03:17:10.000Z",
+                  "uid": "35240-462d3458-8452-4f00-a496-18fb53ddd77c"
+                },
+                {
+                  "id": "c71e9ac3-3ed1-4872-992f-3c3770c35965",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The file to upload (max 3MB).",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/files/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "files",
+                        "upload"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:10.000Z",
+                  "updatedAt": "2026-07-28T03:17:10.000Z",
+                  "uid": "35240-c71e9ac3-3ed1-4872-992f-3c3770c35965"
+                },
+                {
+                  "id": "8358f0b6-9908-4a61-a189-91ae0ecab19b",
+                  "name": "File too large (exceeds 3MB limit).",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The file to upload (max 3MB).",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/files/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "files",
+                        "upload"
+                      ]
+                    }
+                  },
+                  "status": "Request Entity Too Large",
+                  "code": 413,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:10.000Z",
+                  "updatedAt": "2026-07-28T03:17:10.000Z",
+                  "uid": "35240-8358f0b6-9908-4a61-a189-91ae0ecab19b"
+                },
+                {
+                  "id": "e860a617-2c9b-45fe-88dc-2a185f6679b4",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The file to upload (max 3MB).",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/files/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "files",
+                        "upload"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:10.000Z",
+                  "updatedAt": "2026-07-28T03:17:10.000Z",
+                  "uid": "35240-e860a617-2c9b-45fe-88dc-2a185f6679b4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:10.000Z",
+              "updatedAt": "2026-07-28T03:17:10.000Z",
+              "uid": "35240-4676b4d8-3ed5-4568-b9ee-10d1ea8bbc3a"
+            }
+          ],
+          "id": "c2aaedd0-c2a7-4474-9497-8089e8fa94a1",
+          "createdAt": "2026-07-28T03:17:10.000Z",
+          "updatedAt": "2026-07-28T03:17:10.000Z",
+          "uid": "35240-c2aaedd0-c2a7-4474-9497-8089e8fa94a1"
+        },
+        {
+          "name": "url",
+          "item": [
+            {
+              "name": "Torii Get file upload URL",
+              "id": "804684d9-7eed-4258-8f1e-079da13ecd1e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/files/url",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "files",
+                    "url"
+                  ]
+                },
+                "description": "Returns a secure, temporary S3 URL for uploading larger files directly."
+              },
+              "response": [
+                {
+                  "id": "3e187149-8d1b-4af8-87c1-1e5fcca40e61",
+                  "name": "A temporary upload URL.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/files/url",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "files",
+                        "url"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"url\": \"<uri>\",\n  \"fileId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:10.000Z",
+                  "updatedAt": "2026-07-28T03:17:10.000Z",
+                  "uid": "35240-3e187149-8d1b-4af8-87c1-1e5fcca40e61"
+                },
+                {
+                  "id": "aa3e22b8-5547-436e-af2d-49f5bb008593",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/files/url",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "files",
+                        "url"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:10.000Z",
+                  "updatedAt": "2026-07-28T03:17:10.000Z",
+                  "uid": "35240-aa3e22b8-5547-436e-af2d-49f5bb008593"
+                },
+                {
+                  "id": "f2606d51-8d45-497e-9d8b-290d1bcb183c",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/files/url",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "files",
+                        "url"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:10.000Z",
+                  "updatedAt": "2026-07-28T03:17:10.000Z",
+                  "uid": "35240-f2606d51-8d45-497e-9d8b-290d1bcb183c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:10.000Z",
+              "updatedAt": "2026-07-28T03:17:10.000Z",
+              "uid": "35240-804684d9-7eed-4258-8f1e-079da13ecd1e"
+            }
+          ],
+          "id": "f572e80e-c81c-449f-94d1-11c56681c642",
+          "createdAt": "2026-07-28T03:17:10.000Z",
+          "updatedAt": "2026-07-28T03:17:10.000Z",
+          "uid": "35240-f572e80e-c81c-449f-94d1-11c56681c642"
+        }
+      ],
+      "id": "3523539b-4ad0-4369-8166-36230cfdca95",
+      "createdAt": "2026-07-28T03:17:10.000Z",
+      "updatedAt": "2026-07-28T03:17:10.000Z",
+      "uid": "35240-3523539b-4ad0-4369-8166-36230cfdca95"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

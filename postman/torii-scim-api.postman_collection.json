@@ -1,0 +1,1046 @@
+{
+  "info": {
+    "_postman_id": "f33a61d4-70ca-46fa-b166-93a8f097034d",
+    "name": "Torii Apps SCIM API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:13.000Z",
+    "updatedAt": "2026-07-28T03:17:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f33a61d4-70ca-46fa-b166-93a8f097034d"
+  },
+  "item": [
+    {
+      "name": "scim",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "Users",
+              "item": [
+                {
+                  "name": "{idUser}",
+                  "item": [
+                    {
+                      "name": "Torii Get SCIM user",
+                      "id": "9aefec75-5b89-4fd5-9507-89bae5c8c4cb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users",
+                            ":idUser"
+                          ],
+                          "variable": [
+                            {
+                              "id": "043e1d92-a177-4982-8fd6-dd08409bd01a",
+                              "key": "idUser",
+                              "value": "<string>",
+                              "description": "(Required) The unique SCIM user identifier."
+                            }
+                          ]
+                        },
+                        "description": "Returns a specific user by ID via SCIM 2.0 protocol."
+                      },
+                      "response": [
+                        {
+                          "id": "7a422584-275b-41d3-a3ce-9b4a1796a91c",
+                          "name": "SCIM user resource.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-7a422584-275b-41d3-a3ce-9b4a1796a91c"
+                        },
+                        {
+                          "id": "0f415658-0131-45ea-9596-4452704e84ad",
+                          "name": "Authentication failed. Invalid or missing API key.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-0f415658-0131-45ea-9596-4452704e84ad"
+                        },
+                        {
+                          "id": "182eba65-fa2b-43e6-a7bf-0d61db97663a",
+                          "name": "User not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-182eba65-fa2b-43e6-a7bf-0d61db97663a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-9aefec75-5b89-4fd5-9507-89bae5c8c4cb"
+                    },
+                    {
+                      "name": "Torii Patch SCIM user",
+                      "id": "7d414aa1-2dd9-449d-b4c4-d9fa7f3ef7c4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users",
+                            ":idUser"
+                          ],
+                          "variable": [
+                            {
+                              "id": "35b7d758-0fee-4e10-9678-15ffbb12bbc6",
+                              "key": "idUser",
+                              "value": "<string>",
+                              "description": "(Required) The unique SCIM user identifier."
+                            }
+                          ]
+                        },
+                        "description": "Partially updates a user via SCIM 2.0 protocol."
+                      },
+                      "response": [
+                        {
+                          "id": "e7a5af0f-6b12-464e-b321-f4704894ea0c",
+                          "name": "User updated successfully.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-e7a5af0f-6b12-464e-b321-f4704894ea0c"
+                        },
+                        {
+                          "id": "a257c5a3-b815-4b6a-bed9-01c82f516e7b",
+                          "name": "Authentication failed. Invalid or missing API key.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-a257c5a3-b815-4b6a-bed9-01c82f516e7b"
+                        },
+                        {
+                          "id": "a000326f-66f2-43a8-9d4c-6a4636350788",
+                          "name": "User not found.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"<string>\",\n      \"value\": {\n        \"description\": \"The value to set.\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-a000326f-66f2-43a8-9d4c-6a4636350788"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-7d414aa1-2dd9-449d-b4c4-d9fa7f3ef7c4"
+                    },
+                    {
+                      "name": "Torii Delete SCIM user",
+                      "id": "c3ddcece-9e1c-43a0-87c7-cbd92a690ece",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users",
+                            ":idUser"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c44e6899-6d64-4847-bc4d-f162dbeae69e",
+                              "key": "idUser",
+                              "value": "<string>",
+                              "description": "(Required) The unique SCIM user identifier."
+                            }
+                          ]
+                        },
+                        "description": "Deletes a user via SCIM 2.0 protocol."
+                      },
+                      "response": [
+                        {
+                          "id": "f5057739-84c3-47ce-9d2c-a543389981dd",
+                          "name": "User deleted successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-f5057739-84c3-47ce-9d2c-a543389981dd"
+                        },
+                        {
+                          "id": "65723ed0-aef7-4dfd-8ae4-ea124cabeec9",
+                          "name": "Authentication failed. Invalid or missing API key.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-65723ed0-aef7-4dfd-8ae4-ea124cabeec9"
+                        },
+                        {
+                          "id": "854b3af5-1852-466b-8cb7-73219ffb0e72",
+                          "name": "User not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/scim/v2/Users/:idUser",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "scim",
+                                "v2",
+                                "Users",
+                                ":idUser"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "idUser"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:17:13.000Z",
+                          "updatedAt": "2026-07-28T03:17:13.000Z",
+                          "uid": "35240-854b3af5-1852-466b-8cb7-73219ffb0e72"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-c3ddcece-9e1c-43a0-87c7-cbd92a690ece"
+                    }
+                  ],
+                  "id": "e225d244-596d-4873-996a-383b8a748112",
+                  "createdAt": "2026-07-28T03:17:13.000Z",
+                  "updatedAt": "2026-07-28T03:17:13.000Z",
+                  "uid": "35240-e225d244-596d-4873-996a-383b8a748112"
+                },
+                {
+                  "name": "Torii List SCIM users",
+                  "id": "90e85115-77e5-4438-8870-13d2908a3a57",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scim/v2/Users?startIndex=1&count=100&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scim",
+                        "v2",
+                        "Users"
+                      ],
+                      "query": [
+                        {
+                          "description": "The 1-based index of the first result.",
+                          "key": "startIndex",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page (max 200).",
+                          "key": "count",
+                          "value": "100"
+                        },
+                        {
+                          "description": "SCIM filter expression (e.g. userName eq \"user@example.com\").",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "List users via SCIM 2.0 protocol. Default results per page is 100, with a maximum of 200."
+                  },
+                  "response": [
+                    {
+                      "id": "36f37ee6-e208-454d-be70-a94b0bc9b877",
+                      "name": "A list of SCIM user resources.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users?startIndex=1&count=100&filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users"
+                          ],
+                          "query": [
+                            {
+                              "description": "The 1-based index of the first result.",
+                              "key": "startIndex",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page (max 200).",
+                              "key": "count",
+                              "value": "100"
+                            },
+                            {
+                              "description": "SCIM filter expression (e.g. userName eq \"user@example.com\").",
+                              "key": "filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"totalResults\": \"<integer>\",\n  \"startIndex\": \"<integer>\",\n  \"itemsPerPage\": \"<integer>\",\n  \"Resources\": [\n    {\n      \"schemas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"name\": {\n        \"givenName\": \"<string>\",\n        \"familyName\": \"<string>\"\n      },\n      \"emails\": [\n        {\n          \"value\": \"<email>\",\n          \"type\": \"<string>\",\n          \"primary\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<email>\",\n          \"type\": \"<string>\",\n          \"primary\": \"<boolean>\"\n        }\n      ],\n      \"active\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"schemas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"name\": {\n        \"givenName\": \"<string>\",\n        \"familyName\": \"<string>\"\n      },\n      \"emails\": [\n        {\n          \"value\": \"<email>\",\n          \"type\": \"<string>\",\n          \"primary\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<email>\",\n          \"type\": \"<string>\",\n          \"primary\": \"<boolean>\"\n        }\n      ],\n      \"active\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-36f37ee6-e208-454d-be70-a94b0bc9b877"
+                    },
+                    {
+                      "id": "f0050b7f-de58-4dac-84cd-8d6a28d7a289",
+                      "name": "Authentication failed. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users?startIndex=1&count=100&filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users"
+                          ],
+                          "query": [
+                            {
+                              "description": "The 1-based index of the first result.",
+                              "key": "startIndex",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page (max 200).",
+                              "key": "count",
+                              "value": "100"
+                            },
+                            {
+                              "description": "SCIM filter expression (e.g. userName eq \"user@example.com\").",
+                              "key": "filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-f0050b7f-de58-4dac-84cd-8d6a28d7a289"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:13.000Z",
+                  "updatedAt": "2026-07-28T03:17:13.000Z",
+                  "uid": "35240-90e85115-77e5-4438-8870-13d2908a3a57"
+                },
+                {
+                  "name": "Torii Create SCIM user",
+                  "id": "20c39cfb-7e05-44fe-ba0a-defe1c7f9ab3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scim/v2/Users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scim",
+                        "v2",
+                        "Users"
+                      ]
+                    },
+                    "description": "Creates a new user via SCIM 2.0 protocol."
+                  },
+                  "response": [
+                    {
+                      "id": "491c225f-37be-4682-ba7b-93d4a224518d",
+                      "name": "User created successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-491c225f-37be-4682-ba7b-93d4a224518d"
+                    },
+                    {
+                      "id": "a09d5b2b-bf3c-47b2-b54c-37db7eb1c932",
+                      "name": "Authentication failed. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-a09d5b2b-bf3c-47b2-b54c-37db7eb1c932"
+                    },
+                    {
+                      "id": "0cf17341-68c1-446f-8161-370db041a75b",
+                      "name": "User already exists.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"schemas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"name\": {\n    \"givenName\": \"<string>\",\n    \"familyName\": \"<string>\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<email>\",\n      \"type\": \"<string>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/scim/v2/Users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "scim",
+                            "v2",
+                            "Users"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:17:13.000Z",
+                      "updatedAt": "2026-07-28T03:17:13.000Z",
+                      "uid": "35240-0cf17341-68c1-446f-8161-370db041a75b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:13.000Z",
+                  "updatedAt": "2026-07-28T03:17:13.000Z",
+                  "uid": "35240-20c39cfb-7e05-44fe-ba0a-defe1c7f9ab3"
+                }
+              ],
+              "id": "846a060b-000d-46a7-baae-612ba38eb722",
+              "createdAt": "2026-07-28T03:17:13.000Z",
+              "updatedAt": "2026-07-28T03:17:13.000Z",
+              "uid": "35240-846a060b-000d-46a7-baae-612ba38eb722"
+            }
+          ],
+          "id": "88e5cef1-a59e-41cc-a88f-03f114c372f5",
+          "createdAt": "2026-07-28T03:17:13.000Z",
+          "updatedAt": "2026-07-28T03:17:13.000Z",
+          "uid": "35240-88e5cef1-a59e-41cc-a88f-03f114c372f5"
+        }
+      ],
+      "id": "08401c51-a20b-4d41-b485-e9ab9a364a7a",
+      "createdAt": "2026-07-28T03:17:13.000Z",
+      "updatedAt": "2026-07-28T03:17:13.000Z",
+      "uid": "35240-08401c51-a20b-4d41-b485-e9ab9a364a7a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

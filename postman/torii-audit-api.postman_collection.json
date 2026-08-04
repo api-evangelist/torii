@@ -1,0 +1,284 @@
+{
+  "info": {
+    "_postman_id": "9d902ebc-76a7-4f78-9778-1ecb5828c227",
+    "name": "Torii Apps Audit API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:07.000Z",
+    "updatedAt": "2026-07-28T03:17:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9d902ebc-76a7-4f78-9778-1ecb5828c227"
+  },
+  "item": [
+    {
+      "name": "audit",
+      "item": [
+        {
+          "name": "Torii Get admin audit logs",
+          "id": "2a889193-c9ed-45e1-a31f-02be8b54f258",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                "key": "X-API-Version",
+                "value": "1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/audit?sort=<string>&size=<integer>&cursor=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "audit"
+              ],
+              "query": [
+                {
+                  "description": "Field to sort results by.",
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results per page (max 1000).",
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Cursor for pagination to retrieve the next page of results.",
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves admin audit log entries. Supports retrieving up to 1,000 audit log entries per request for efficient bulk data access."
+          },
+          "response": [
+            {
+              "id": "ca2bd0aa-94aa-476d-bd4e-765fcec33b3f",
+              "name": "A list of audit log entries.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audit?sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audit"
+                  ],
+                  "query": [
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page (max 1000).",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"action\": \"<string>\",\n      \"actor\": \"<string>\",\n      \"actorEmail\": \"<email>\",\n      \"target\": \"<string>\",\n      \"details\": {},\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"action\": \"<string>\",\n      \"actor\": \"<string>\",\n      \"actorEmail\": \"<email>\",\n      \"target\": \"<string>\",\n      \"details\": {},\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:17:08.000Z",
+              "updatedAt": "2026-07-28T03:17:08.000Z",
+              "uid": "35240-ca2bd0aa-94aa-476d-bd4e-765fcec33b3f"
+            },
+            {
+              "id": "ff5641aa-51c3-48ea-bf2c-96b1e9652e4f",
+              "name": "Authentication failed. Invalid or missing API key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audit?sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audit"
+                  ],
+                  "query": [
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page (max 1000).",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:08.000Z",
+              "updatedAt": "2026-07-28T03:17:08.000Z",
+              "uid": "35240-ff5641aa-51c3-48ea-bf2c-96b1e9652e4f"
+            },
+            {
+              "id": "ad197cca-333c-48a0-96d4-e9c73afe0b45",
+              "name": "Rate limit exceeded. Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audit?sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audit"
+                  ],
+                  "query": [
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page (max 1000).",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination to retrieve the next page of results.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:08.000Z",
+              "updatedAt": "2026-07-28T03:17:08.000Z",
+              "uid": "35240-ad197cca-333c-48a0-96d4-e9c73afe0b45"
+            }
+          ],
+          "createdAt": "2026-07-28T03:17:08.000Z",
+          "updatedAt": "2026-07-28T03:17:08.000Z",
+          "uid": "35240-2a889193-c9ed-45e1-a31f-02be8b54f258"
+        }
+      ],
+      "id": "cb419f37-14d1-4813-b3e9-e03b115e7e0c",
+      "createdAt": "2026-07-28T03:17:08.000Z",
+      "updatedAt": "2026-07-28T03:17:08.000Z",
+      "uid": "35240-cb419f37-14d1-4813-b3e9-e03b115e7e0c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

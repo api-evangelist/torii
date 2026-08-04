@@ -1,0 +1,298 @@
+{
+  "info": {
+    "_postman_id": "b3f0bac0-5d6c-4fe4-85c5-ac136fe9ac90",
+    "name": "Torii Apps Services API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:18.000Z",
+    "updatedAt": "2026-07-28T03:17:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b3f0bac0-5d6c-4fe4-85c5-ac136fe9ac90"
+  },
+  "item": [
+    {
+      "name": "services",
+      "item": [
+        {
+          "name": "sync",
+          "item": [
+            {
+              "name": "custom",
+              "item": [
+                {
+                  "name": "Torii Sync custom integration",
+                  "id": "5864eca4-873c-4a54-88e6-1018eecc668e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/services/sync/custom",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "services",
+                        "sync",
+                        "custom"
+                      ]
+                    },
+                    "description": "Triggers a sync of custom integration data, pushing user and license data into Torii."
+                  },
+                  "response": [
+                    {
+                      "id": "40c58c44-38df-4357-af17-111b4937f5eb",
+                      "name": "Sync triggered successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                            "key": "X-API-Version",
+                            "value": "1.0"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/services/sync/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            "sync",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:19.000Z",
+                      "updatedAt": "2026-07-28T03:17:19.000Z",
+                      "uid": "35240-40c58c44-38df-4357-af17-111b4937f5eb"
+                    },
+                    {
+                      "id": "2b50833c-0061-4cb6-bc60-9f5ba3175b3c",
+                      "name": "Authentication failed. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                            "key": "X-API-Version",
+                            "value": "1.0"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/services/sync/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            "sync",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:19.000Z",
+                      "updatedAt": "2026-07-28T03:17:19.000Z",
+                      "uid": "35240-2b50833c-0061-4cb6-bc60-9f5ba3175b3c"
+                    },
+                    {
+                      "id": "7d17aedd-184f-40c6-a088-264c57018b1b",
+                      "name": "Rate limit exceeded. Too many requests.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                            "key": "X-API-Version",
+                            "value": "1.0"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"appName\": \"<string>\",\n  \"users\": [\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"status\": \"<string>\",\n      \"role\": \"<string>\",\n      \"lastUsedDate\": \"<dateTime>\"\n    }\n  ],\n  \"licenses\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\",\n      \"pricePerUser\": \"<number>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/services/sync/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            "sync",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:19.000Z",
+                      "updatedAt": "2026-07-28T03:17:19.000Z",
+                      "uid": "35240-7d17aedd-184f-40c6-a088-264c57018b1b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:19.000Z",
+                  "updatedAt": "2026-07-28T03:17:19.000Z",
+                  "uid": "35240-5864eca4-873c-4a54-88e6-1018eecc668e"
+                }
+              ],
+              "id": "d80dc2c9-5405-41e9-8432-c1d69518c9d3",
+              "createdAt": "2026-07-28T03:17:19.000Z",
+              "updatedAt": "2026-07-28T03:17:19.000Z",
+              "uid": "35240-d80dc2c9-5405-41e9-8432-c1d69518c9d3"
+            }
+          ],
+          "id": "370b49ec-aa1f-4a61-8ff7-4c2c710ab540",
+          "createdAt": "2026-07-28T03:17:19.000Z",
+          "updatedAt": "2026-07-28T03:17:19.000Z",
+          "uid": "35240-370b49ec-aa1f-4a61-8ff7-4c2c710ab540"
+        }
+      ],
+      "id": "892ff99e-4a73-447e-baad-9d4770bfcc79",
+      "createdAt": "2026-07-28T03:17:19.000Z",
+      "updatedAt": "2026-07-28T03:17:19.000Z",
+      "uid": "35240-892ff99e-4a73-447e-baad-9d4770bfcc79"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

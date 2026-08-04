@@ -1,0 +1,297 @@
+{
+  "info": {
+    "_postman_id": "171f2116-7b32-4016-978f-ccca40177d03",
+    "name": "Torii Apps Workflows API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:22.000Z",
+    "updatedAt": "2026-07-28T03:17:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-171f2116-7b32-4016-978f-ccca40177d03"
+  },
+  "item": [
+    {
+      "name": "workflows",
+      "item": [
+        {
+          "name": "actionExecutions",
+          "item": [
+            {
+              "name": "Torii List workflow action executions",
+              "id": "7ae64710-06da-41ec-9586-49ba91ad9caa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workflows/actionExecutions?sort=<string>&size=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workflows",
+                    "actionExecutions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of workflow action executions."
+              },
+              "response": [
+                {
+                  "id": "253e6844-feeb-4bf2-b354-4e3ea01b505a",
+                  "name": "A list of workflow action executions.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workflows/actionExecutions?sort=<string>&size=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workflows",
+                        "actionExecutions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Field to sort results by.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "size",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Cursor for pagination.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"workflowId\": \"<string>\",\n      \"actionType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"workflowId\": \"<string>\",\n      \"actionType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:17:22.000Z",
+                  "updatedAt": "2026-07-28T03:17:22.000Z",
+                  "uid": "35240-253e6844-feeb-4bf2-b354-4e3ea01b505a"
+                },
+                {
+                  "id": "63c998fa-679e-43de-b769-ca142f1f32d3",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workflows/actionExecutions?sort=<string>&size=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workflows",
+                        "actionExecutions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Field to sort results by.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "size",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Cursor for pagination.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:22.000Z",
+                  "updatedAt": "2026-07-28T03:17:22.000Z",
+                  "uid": "35240-63c998fa-679e-43de-b769-ca142f1f32d3"
+                },
+                {
+                  "id": "a0485390-b250-4d1f-9e4b-1a154c7731fe",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workflows/actionExecutions?sort=<string>&size=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workflows",
+                        "actionExecutions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Field to sort results by.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "size",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Cursor for pagination.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:22.000Z",
+                  "updatedAt": "2026-07-28T03:17:22.000Z",
+                  "uid": "35240-a0485390-b250-4d1f-9e4b-1a154c7731fe"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:22.000Z",
+              "updatedAt": "2026-07-28T03:17:22.000Z",
+              "uid": "35240-7ae64710-06da-41ec-9586-49ba91ad9caa"
+            }
+          ],
+          "id": "dcd57763-9806-48a2-86f6-a27e5ecbafc0",
+          "createdAt": "2026-07-28T03:17:22.000Z",
+          "updatedAt": "2026-07-28T03:17:22.000Z",
+          "uid": "35240-dcd57763-9806-48a2-86f6-a27e5ecbafc0"
+        }
+      ],
+      "id": "9f83f67f-fa80-4c19-a12d-f81996b17263",
+      "createdAt": "2026-07-28T03:17:22.000Z",
+      "updatedAt": "2026-07-28T03:17:22.000Z",
+      "uid": "35240-9f83f67f-fa80-4c19-a12d-f81996b17263"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}

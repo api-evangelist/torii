@@ -1,0 +1,711 @@
+{
+  "info": {
+    "_postman_id": "77cdb5c9-9f7e-4edb-97ce-7ef8105e6ba9",
+    "name": "Torii Apps Metadata API",
+    "description": "The Torii API provides programmatic access to the Torii SaaS Management Platform. It allows you to manage apps, users, contracts, licenses, audit logs, and file uploads. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes. Torii APIs consist of both proprietary and SCIM 2.0 APIs.\n\nContact Support:\n Name: Torii",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:11.000Z",
+    "updatedAt": "2026-07-28T03:17:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-77cdb5c9-9f7e-4edb-97ce-7ef8105e6ba9"
+  },
+  "item": [
+    {
+      "name": "apps",
+      "item": [
+        {
+          "name": "metadata",
+          "item": [
+            {
+              "name": "Torii List app fields metadata",
+              "id": "3af44b7d-af4d-4a89-a1c5-9201906366c2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apps/metadata?search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps",
+                    "metadata"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search by field name or key.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Lists app fields (predefined and custom), searchable by field name or key."
+              },
+              "response": [
+                {
+                  "id": "e864a58f-4a3c-4fa4-9e39-7e3f5f9fe521",
+                  "name": "A list of app field metadata.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isCustom\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isCustom\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-e864a58f-4a3c-4fa4-9e39-7e3f5f9fe521"
+                },
+                {
+                  "id": "1c64b857-c31b-4b53-8177-49cd91e1c1cf",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-1c64b857-c31b-4b53-8177-49cd91e1c1cf"
+                },
+                {
+                  "id": "2a92cdbb-1df9-46ae-a1eb-d01d678bf599",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-2a92cdbb-1df9-46ae-a1eb-d01d678bf599"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:11.000Z",
+              "updatedAt": "2026-07-28T03:17:11.000Z",
+              "uid": "35240-3af44b7d-af4d-4a89-a1c5-9201906366c2"
+            }
+          ],
+          "id": "30073993-436a-4903-a901-86a4da48ddff",
+          "createdAt": "2026-07-28T03:17:11.000Z",
+          "updatedAt": "2026-07-28T03:17:11.000Z",
+          "uid": "35240-30073993-436a-4903-a901-86a4da48ddff"
+        }
+      ],
+      "id": "0b3ee871-077b-4388-8680-8d3490ca3dfa",
+      "createdAt": "2026-07-28T03:17:11.000Z",
+      "updatedAt": "2026-07-28T03:17:11.000Z",
+      "uid": "35240-0b3ee871-077b-4388-8680-8d3490ca3dfa"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "metadata",
+          "item": [
+            {
+              "name": "Torii List user fields metadata",
+              "id": "77397f19-33ef-4b68-b12e-74c98b043ec2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/metadata?search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "metadata"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search by field name or key.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Lists user fields (predefined and custom), searchable by field name or key."
+              },
+              "response": [
+                {
+                  "id": "b1e62ad4-869e-4828-b39c-4026bb4d437b",
+                  "name": "A list of user field metadata.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isCustom\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isCustom\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-b1e62ad4-869e-4828-b39c-4026bb4d437b"
+                },
+                {
+                  "id": "7ef6b420-66f4-4b5e-bd83-ac06ac514337",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-7ef6b420-66f4-4b5e-bd83-ac06ac514337"
+                },
+                {
+                  "id": "0ae99c66-5789-4edc-a713-627c66841529",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-0ae99c66-5789-4edc-a713-627c66841529"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:11.000Z",
+              "updatedAt": "2026-07-28T03:17:11.000Z",
+              "uid": "35240-77397f19-33ef-4b68-b12e-74c98b043ec2"
+            }
+          ],
+          "id": "dede236e-4f4c-4cc1-a072-476cebf3bd1f",
+          "createdAt": "2026-07-28T03:17:11.000Z",
+          "updatedAt": "2026-07-28T03:17:11.000Z",
+          "uid": "35240-dede236e-4f4c-4cc1-a072-476cebf3bd1f"
+        }
+      ],
+      "id": "cc4d6936-acc9-4666-8768-dc1ee82f70b3",
+      "createdAt": "2026-07-28T03:17:11.000Z",
+      "updatedAt": "2026-07-28T03:17:11.000Z",
+      "uid": "35240-cc4d6936-acc9-4666-8768-dc1ee82f70b3"
+    },
+    {
+      "name": "contracts",
+      "item": [
+        {
+          "name": "metadata",
+          "item": [
+            {
+              "name": "Torii List contract fields metadata",
+              "id": "d671e70f-273d-47bc-b7be-7dc2dedba3ba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                    "key": "X-API-Version",
+                    "value": "1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contracts/metadata?search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts",
+                    "metadata"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search by field name or key.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Lists contract fields (predefined and custom), searchable by field name or key."
+              },
+              "response": [
+                {
+                  "id": "4af94247-138b-4ee8-a9f8-5829f4d1a3b1",
+                  "name": "A list of contract field metadata.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isCustom\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isCustom\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-4af94247-138b-4ee8-a9f8-5829f4d1a3b1"
+                },
+                {
+                  "id": "08e114be-1537-46e1-95ce-1cdf152f5445",
+                  "name": "Authentication failed. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-08e114be-1537-46e1-95ce-1cdf152f5445"
+                },
+                {
+                  "id": "cb2a5d81-886f-4cb8-a23a-c5e0a9ffa4f7",
+                  "name": "Rate limit exceeded. Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.",
+                        "key": "X-API-Version",
+                        "value": "1.1"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/metadata?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search by field name or key.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:11.000Z",
+                  "updatedAt": "2026-07-28T03:17:11.000Z",
+                  "uid": "35240-cb2a5d81-886f-4cb8-a23a-c5e0a9ffa4f7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:11.000Z",
+              "updatedAt": "2026-07-28T03:17:11.000Z",
+              "uid": "35240-d671e70f-273d-47bc-b7be-7dc2dedba3ba"
+            }
+          ],
+          "id": "34163ec2-7da0-4a47-8aec-fd4a9e2fbb73",
+          "createdAt": "2026-07-28T03:17:11.000Z",
+          "updatedAt": "2026-07-28T03:17:11.000Z",
+          "uid": "35240-34163ec2-7da0-4a47-8aec-fd4a9e2fbb73"
+        }
+      ],
+      "id": "ef0f1ca1-0c94-4d71-9081-41f65fab0bc5",
+      "createdAt": "2026-07-28T03:17:11.000Z",
+      "updatedAt": "2026-07-28T03:17:11.000Z",
+      "uid": "35240-ef0f1ca1-0c94-4d71-9081-41f65fab0bc5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.toriihq.com/v1.0"
+    }
+  ]
+}
