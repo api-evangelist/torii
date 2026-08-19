@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Torii Apps Files API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii Upload file (up to 3MB)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.toriihq.com/v1.0/files/upload",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload small files up to 3MB as multipart form data. Supported file types: .csv, .xls, .xlsx, .pdf, .doc, .docx, .png, .jpg, .jpeg, .xml, .json, .zip."
+        },
+        {
+          "info": {
+            "name": "Torii Get file upload URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/files/url",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns a secure, temporary S3 URL for uploading larger files directly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

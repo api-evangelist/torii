@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Torii Apps Services API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii Sync custom integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.toriihq.com/v1.0/services/sync/custom",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers a sync of custom integration data, pushing user and license data into Torii."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

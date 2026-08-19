@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Torii Apps SCIM API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SCIM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii List SCIM users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users",
+            "params": [
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "The 1-based index of the first result."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 200)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SCIM filter expression (e.g. userName eq \"user@example.com\")."
+              }
+            ]
+          },
+          "docs": "List users via SCIM 2.0 protocol. Default results per page is 100, with a maximum of 200."
+        },
+        {
+          "info": {
+            "name": "Torii Create SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user via SCIM 2.0 protocol."
+        },
+        {
+          "info": {
+            "name": "Torii Get SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users/:idUser",
+            "params": [
+              {
+                "name": "idUser",
+                "value": "",
+                "type": "path",
+                "description": "The unique SCIM user identifier."
+              }
+            ]
+          },
+          "docs": "Returns a specific user by ID via SCIM 2.0 protocol."
+        },
+        {
+          "info": {
+            "name": "Torii Patch SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users/:idUser",
+            "params": [
+              {
+                "name": "idUser",
+                "value": "",
+                "type": "path",
+                "description": "The unique SCIM user identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a user via SCIM 2.0 protocol."
+        },
+        {
+          "info": {
+            "name": "Torii Delete SCIM user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.toriihq.com/v1.0/scim/v2/Users/:idUser",
+            "params": [
+              {
+                "name": "idUser",
+                "value": "",
+                "type": "path",
+                "description": "The unique SCIM user identifier."
+              }
+            ]
+          },
+          "docs": "Deletes a user via SCIM 2.0 protocol."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

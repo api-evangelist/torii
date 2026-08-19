@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Torii Apps Workflows API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii List workflow action executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/workflows/actionExecutions",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination."
+              }
+            ]
+          },
+          "docs": "Returns a list of workflow action executions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

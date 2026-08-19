@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Torii Apps Metadata API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Torii List app fields metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/apps/metadata",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by field name or key."
+              }
+            ]
+          },
+          "docs": "Lists app fields (predefined and custom), searchable by field name or key."
+        },
+        {
+          "info": {
+            "name": "Torii List user fields metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/users/metadata",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by field name or key."
+              }
+            ]
+          },
+          "docs": "Lists user fields (predefined and custom), searchable by field name or key."
+        },
+        {
+          "info": {
+            "name": "Torii List contract fields metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.toriihq.com/v1.0/contracts/metadata",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by field name or key."
+              }
+            ]
+          },
+          "docs": "Lists contract fields (predefined and custom), searchable by field name or key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
