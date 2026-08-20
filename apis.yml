@@ -6,6 +6,8 @@ apis:
   description: Manage applications discovered and tracked in your organization.
   humanURL: https://developers.toriihq.com/reference/introduction-1
   tags:
+  - Application
+  tags_raw:
   - Apps
   properties:
   - type: OpenAPI
@@ -99,6 +101,8 @@ apis:
   description: Upload and manage files.
   humanURL: https://developers.toriihq.com/reference/introduction-1
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -254,6 +258,8 @@ apis:
   description: Manage users in your organization.
   humanURL: https://developers.toriihq.com/reference/introduction-1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -313,6 +319,13 @@ apis:
     url: json-ld/torii-context.jsonld
 name: Torii
 tags:
+  - Application
+  - Compliance
+  - Cost Optimization
+  - Governance
+  - IT Management
+  - SaaS Management
+tags_raw:
   - Apps
   - Compliance
   - Cost Optimization
