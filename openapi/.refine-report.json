@@ -1,16 +1,7 @@
 {
   "provider": "torii",
   "sources": [
-    "torii-apps-api-openapi.yml",
-    "torii-audit-api-openapi.yml",
-    "torii-contracts-api-openapi.yml",
-    "torii-files-api-openapi.yml",
-    "torii-metadata-api-openapi.yml",
-    "torii-parsings-api-openapi.yml",
-    "torii-scim-api-openapi.yml",
-    "torii-services-api-openapi.yml",
-    "torii-users-api-openapi.yml",
-    "torii-workflows-api-openapi.yml"
+    "_original/torii-torii-openapi.yml"
   ],
   "outputs": [
     "torii-apps-api-openapi.yml",
@@ -27,6 +18,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "torii-torii-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "torii-torii-openapi.yml: tagged paths POST /services/sync/custom -> Services",
+    "torii-torii-openapi.yml: tagged paths GET /workflows/actionExecutions -> Workflows",
+    "torii-torii-openapi.yml: declared missing tag: Services",
+    "torii-torii-openapi.yml: declared missing tag: Workflows",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "torii-apps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-audit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-parsings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-scim-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-services-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "torii-workflows-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
