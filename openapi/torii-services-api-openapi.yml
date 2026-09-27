@@ -92,16 +92,6 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  parameters:
-    apiVersion:
-      name: X-API-Version
-      in: header
-      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
-      schema:
-        type: string
-        enum:
-        - '1.0'
-        - '1.1'
   responses:
     Unauthorized:
       description: Authentication failed. Invalid or missing API key.
@@ -125,6 +115,16 @@ components:
                 type: string
               message:
                 type: string
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
+      schema:
+        type: string
+        enum:
+        - '1.0'
+        - '1.1'
   securitySchemes:
     bearerAuth:
       type: http
