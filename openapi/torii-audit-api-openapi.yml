@@ -61,17 +61,6 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    Unauthorized:
-      description: Authentication failed. Invalid or missing API key.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              message:
-                type: string
     RateLimited:
       description: Rate limit exceeded. Too many requests.
       content:
@@ -83,6 +72,27 @@ components:
                 type: string
               message:
                 type: string
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+  parameters:
+    apiVersion:
+      name: X-API-Version
+      in: header
+      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
+      schema:
+        type: string
+        enum:
+        - '1.0'
+        - '1.1'
   schemas:
     AuditLogEntry:
       type: object
@@ -110,16 +120,6 @@ components:
           type: string
           format: date-time
           description: When the action was performed.
-  parameters:
-    apiVersion:
-      name: X-API-Version
-      in: header
-      description: 'Override the default API version. Supported values: 1.0, 1.1. Default is 1.0 for keys created before Feb 1st 2025, and 1.1 for keys created after.'
-      schema:
-        type: string
-        enum:
-        - '1.0'
-        - '1.1'
   securitySchemes:
     bearerAuth:
       type: http
