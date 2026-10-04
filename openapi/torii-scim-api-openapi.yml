@@ -187,18 +187,6 @@ paths:
         '404':
           description: User not found.
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed. Invalid or missing API key.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              message:
-                type: string
   schemas:
     ScimUser:
       type: object
@@ -245,6 +233,18 @@ components:
         externalId:
           type: string
           description: External identifier from the identity provider.
+  responses:
+    Unauthorized:
+      description: Authentication failed. Invalid or missing API key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
   securitySchemes:
     bearerAuth:
       type: http
