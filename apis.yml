@@ -392,6 +392,9 @@ maintainers:
     email: kin@apievangelist.com
 specificationVersion: '0.23'
 common:
+  - type: CapabilityMap
+    url: capabilities/torii-capability-edges.yml
+    name: Torii Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/torii/overview
   - type: AgenticAccess
