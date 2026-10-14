@@ -1,0 +1,35 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- okta/integrations/okta-integration-edges.yml
+source:
+- okta/integrations/okta-integration-edges.yml
+edges:
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/toriimanageapiservice/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Torii (Read and Take action)
+  - Torii (Read)
+  - Torii
+  listing_count: 3
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Automation
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - API
+  - CUSTOM_SOM
+  - CREATE
+  - DEACTIVATE
+  - SAML
+  - UPDATE
